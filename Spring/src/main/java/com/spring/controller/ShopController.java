@@ -2,7 +2,9 @@ package com.spring.controller;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -78,12 +80,14 @@ public class ShopController {
 	// 상품 소감(댓글) 작성
 	@ResponseBody
 	@RequestMapping(value = "/view/registReply", method = RequestMethod.POST)
-	public void registReply(ReplyVO reply,  HttpSession session) throws Exception {
+	public void registReply(ReplyVO reply,  HttpSession session,Model model) throws Exception {
 	   logger.info("regist reply");
 	   
 	   MemberVO member = (MemberVO)session.getAttribute("member");
 	   reply.setUserId(member.getUserId());
-	   
+
+	  	   
+	     
 	   service.registReply(reply);
 	}   
 	
@@ -265,5 +269,7 @@ public class ShopController {
 		
 		model.addAttribute("orderView",orderView);
 	}
+	
+	
 	
 }

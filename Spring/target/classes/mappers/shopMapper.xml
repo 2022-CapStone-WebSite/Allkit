@@ -32,14 +32,16 @@ select
 
 <!-- 상품 소감(댓글) 작성 -->
 <insert id="registReply">
-	insert into tbl_reply (gdsNum, userId, repNum, repCon)
-		values (#{gdsNum}, #{userId}, tbl_reply_seq.nextval, #{repCon})
+	insert into tbl_reply (gdsNum, userId, repNum, repCon, ratingAvg)
+		values (#{gdsNum}, #{userId}, tbl_reply_seq.nextval, #{repCon}, #{ratingAvg})
 </insert>
 
+
+  
 <!-- 상품 소감(댓글) 리스트 -->
-<select id="replyList" resultType="com.spring.domain.ReplyListVO">
-	select
-    	r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate, m.userName
+<select id="replyList" resultType="com.spring.domain.ReplyListVO">  
+	select  
+    	r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate, r.ratingAvg, m.userName 
 	from tbl_reply r
 	    inner join tbl_member m
 	        on r.userId = m.userId
@@ -79,10 +81,10 @@ select
 select 
     row_number() over(order by c.cartNum desc) as num,
     c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate,
-    g.gdsName, g.gdsPrice, g.gdsThumbImg
+    g.gdsName, g.gdsPrice, g.gdsThumbImg, g.gdsKcal
 from tbl_cart c
     inner join tbl_goods g
-     	on c.gdsNum = g.gdsNum
+     	on c.gdsNum = g.gdsNum 
     where c.userId = #{userId}
 </select>
 

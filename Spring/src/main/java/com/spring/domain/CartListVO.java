@@ -14,6 +14,18 @@ public class CartListVO {
 	private int gdsPrice;
 	private String gdsThumbImg;
 	
+	private int gdsKcal;
+	
+	
+	
+	
+	public int getGdsKcal() {
+		return gdsKcal;
+	}
+	public void setGdsKcal(int gdsKcal) {
+		this.gdsKcal = gdsKcal;
+	}
+	
 	
 	public int getCartNum() {
 		return cartNum;

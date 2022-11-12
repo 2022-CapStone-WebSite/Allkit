@@ -1,4 +1,12 @@
 @charset "UTF-8";
+
+		li.cus{font-size:20px;}  
+		li.call{font-size:30px;}   
+		li.bold{font-weight:bold;}
+		
+		button.deletes{font-size:20px; padding:5px 10px; font-weight:bold; color:white;}
+	
+		
 		body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
 		a { color:#05f; text-decoration:none; }
 		a:hover { text-decoration:underline; }
@@ -8,18 +16,26 @@
 	
 		/* ---------- */
 		
+		div#container_box{padding:50px; margin:0 50px;}  
+		
 		div#root { width:900px; margin:0 auto; }
+		div#root2 { width:100%; margin:0 auto; }
+				
 		header#header {}
 		nav#nav {}
 		section#container { }
 		section#content { float:right; width:700px; }
 		aside#aside { float:left; width:180px; }
 		section#container::after { content:""; display:block; clear:both; }	
+		
 		footer#footer { background:#eee; padding:20px; }
+		footer#footer { margin-top:100px; border-radius:50px 50px 0 0; }
+		footer#footer div#footer_box { padding:0 50px; }
+		
 		
 		/* ---------- */
 		
-		header#header div#header_box { text-align:center; padding:30px 0; }
+		header#header div#header_box { text-align:center;}
 		header#header div#header_box h1 { font-size:50px; }
 		header#header div#header_box h1 a { color:#000; }
 		
@@ -29,14 +45,14 @@
 		
 		section#container { }
 		
-		aside#aside h3 { font-size:22px; margin-bottom:20px; text-align:center; }
-		aside#aside li { font-size:16px; text-align:center; }
+		aside#aside h3 { font-size:23px; margin-bottom:20px; text-align:center; }
+		aside#aside li { font-size:20px; text-align:center; float:center; font-weight:bold;  z-index:1; }
 		aside#aside li a { color:#000; display:block; padding:10px 0; }
 		aside#aside li a:hover { text-decoration:none; background:#eee; }
 		
 		aside#aside li { position:relative; }
 		aside#aside li:hover { background:#eee; } 		
-		aside#aside li > ul.low { display:none; position:absolute; top:0; left:180px;  }
+		aside#aside li > ul.low { display:none; position:absolute; top:48px; left:0;}
 		aside#aside li:hover > ul.low { display:block; }
 		aside#aside li:hover > ul.low li a { background:#eee; border:1px solid #eee; }
 		aside#aside li:hover > ul.low li a:hover { background:#fff;}
@@ -57,13 +73,13 @@
 		 section#content div.gdsInfo span { display:inline-block; width:100px; font-weight:bold; margin-right:10px; }
 		 section#content div.gdsInfo .delete { text-align:right; }
 		 section#content div.gdsInfo .delete button { font-size:18px;
-            padding:5px 10px; border:1px solid #eee; background:#eee;}
+            padding:5px 10px; border:none; background:#555555;}
             
-      		.allCheck { float:left; width:200px; }
+      	.allCheck { float:left; width:200px; }
 		.allCheck input { width:16px; height:16px; }
 		.allCheck label { margin-left:10px; }
 		.delBtn { float:right; width:300px; text-align:right; }
-		.delBtn button { font-size:18px; padding:5px 10px; border:1px solid #eee; background:#eee;}
+		.delBtn button { font-size:20px; padding:5px 10px; border:none; background:#555555; font-weight:bold; color:white;}
 		
 		.checkBox { float:left; width:30px; }
 		.checkBox input { width:16px; height:16px; }
@@ -72,7 +88,7 @@
 		.listResult .sum { float:left; width:45%; font-size:22px; }
 		
 		.listResult .orderOpne { float:right; width:45%; text-align:right; }
-		.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
+		.listResult .orderOpne button { font-size:20px; padding:5px 10px; border:none; background:#555555; font-weight:bold; color:white;}
 		.listResult::after { content:""; display:block; clear:both; }
 
 		.orderInfo { border:5px solid #eee; padding:20px; display:none; }

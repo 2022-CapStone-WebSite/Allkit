@@ -10,9 +10,20 @@ public class ReplyListVO {
 	private String repCon;
 	private Date repDate;
 	
+	private int ratingAvg;
+	
 	private String userName;
 	
 	
+	
+	   
+	
+	public int getRatingAvg() {
+		return ratingAvg;
+	}
+	public void setRatingAvg(int ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
 	public String getUserName() {
 		return userName;
 	}

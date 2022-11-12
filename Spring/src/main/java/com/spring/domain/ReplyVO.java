@@ -10,6 +10,17 @@ public class ReplyVO {
 	private String repCon;
 	private Date repDate;
 	
+	private int ratingAvg;
+
+	
+	  
+	
+	public int getRatingAvg() {
+		return ratingAvg;
+	}
+	public void setRatingAvg(int ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
 	
 	public int getGdsNum() {
 		return gdsNum;

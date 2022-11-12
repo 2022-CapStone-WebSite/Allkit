@@ -66,22 +66,13 @@
 				 <label for="gdsStock">상품수량</label>
 				 <input type="text" id="gdsStock" name="gdsStock" />
 				</div>
-				
+
 				<div class="inputArea">
-				 <label for="gdsDes">상품소개</label>
-				 <textarea rows="5" cols="50" id="gdsDes" name="gdsDes"></textarea>
-				
-				<script>
-				 var ckeditor_config = {
-				   resize_enaleb : false,
-				   enterMode : CKEDITOR.ENTER_BR,
-				   shiftEnterMode : CKEDITOR.ENTER_P,
-				   filebrowserUploadUrl : "/admin/goods/ckUpload"
-				 };
-				 
-				 CKEDITOR.replace("gdsDes", ckeditor_config);
-				</script>
+				 <label for="gdsKcal">칼로리</label>
+				 <input type="text" id="gdsKcal" name="gdsKcal" />
 				</div>
+				
+				
 				
 				<div class="inputArea">
 					<label for="gdsImg">이미지</label>
@@ -102,6 +93,27 @@
 				
 				<%=request.getRealPath("/") %>
 				</div>
+				
+				
+				  
+				
+				<div class="inputArea">
+				 <label for="gdsDes">상품소개</label>
+				 <textarea rows="5" cols="50" id="gdsDes" name="gdsDes"></textarea>
+				
+				<script>
+				 var ckeditor_config = {
+				   resize_enaleb : false,
+				   enterMode : CKEDITOR.ENTER_BR,
+				   shiftEnterMode : CKEDITOR.ENTER_P,
+				   filebrowserUploadUrl : "/admin/goods/ckUpload"
+				 };
+				 
+				 CKEDITOR.replace("gdsDes", ckeditor_config);
+				</script>
+				</div>
+				
+				
 				
 				
 				<div class="inputArea">

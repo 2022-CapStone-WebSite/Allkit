@@ -17,7 +17,19 @@ public class GoodsViewVO {
 	private String cateName;
 	
 	private String gdsThumbImg;
+	
+	private int gdsKcal;
+	
+	
 	  
+	
+	public int getGdsKcal() {
+		return gdsKcal;
+	}
+	public void setGdsKcal(int gdsKcal) {
+		this.gdsKcal = gdsKcal;
+	}
+	
 	
 	public String getGdsThumbImg() {
 		return gdsThumbImg;

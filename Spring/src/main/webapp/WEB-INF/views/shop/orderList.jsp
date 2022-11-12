@@ -11,20 +11,40 @@
 
 </head>
 <body>
-<div id = "root">
+<div id = "root2">
 	<header id = "header">
 		<div id = "header_box">
 			<%@ include file = "/WEB-INF/views/include/header.jsp" %>	
 		</div>
 	</header>
+</div><br>
 	
-	<nav id = "nav">
-		<div id = "nav_box">
-			<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
-		</div>
-	</nav>
-	
+
+<div id = "root">
+	<br><br><br>
 	<section id="container">
+	
+		<aside id="aside">
+			<%@ include file="../include/aside.jsp" %>
+		</aside>  
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside2.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside3.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside4.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside5.jsp" %>
+		</aside>
+		
+		<br><br><br><br>
 		<div id="container_box">
 		
 			<section id="content">
@@ -43,12 +63,13 @@
 				 </ul>
 			</section>
 			
-			<aside id="aside">
-				<%@ include file="/WEB-INF/views/include/aside.jsp" %>
-			</aside>
 			
 		</div>
 	</section>
+
+	
+</div>
+
 	  
 	<footer id ="footer">
 		<div id="footer_box">
@@ -56,6 +77,5 @@
 		</div>
 	</footer> 
 	
-</div>
 </body>
 </html>

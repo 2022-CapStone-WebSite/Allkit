@@ -7,11 +7,21 @@
 <head>
 	<title>ALLKIT</title>
 	<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+	
+
+	
+	
 	<link rel="stylesheet" href="/resources/css/user/shop/default.css" />
-
 	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
 
-	
+
+ 
+
+
+ 
 	
 							  
 <script>   
@@ -35,6 +45,7 @@
 					+ "<span class='userName'>" + this.userName + " "
 					+ "<span class='date'>" + repDate + " "
 					+ "</div>"
+					
 					+ "<div class='replyContent'>" + this.repCon + "</div>"
 					
 					+ "<c:if test='${member != null}'>"
@@ -57,20 +68,47 @@
 	
 </head>
 <body>
-<div id = "root">
+<div id = "root2">
 	<header id = "header">
 		<div id = "header_box">
 			<%@ include file = "../include/header.jsp" %>	
 		</div>
 	</header>
-	
-	<nav id = "nav">
-		<div id = "nav_box">
-			<%@ include file = "../include/nav.jsp" %>
-		</div>
-	</nav>
-	
+</div><br>
+
+<div id = "root">	
+
+	<br><br><br>	
 	<section id="container">
+			<aside id="aside">
+				<%@ include file="../include/aside.jsp" %>
+			</aside>  
+			
+			<aside id="aside">
+				<%@ include file="/WEB-INF/views/include/aside2.jsp" %>
+			</aside>
+			
+			<aside id="aside">
+				<%@ include file="/WEB-INF/views/include/aside3.jsp" %>
+			</aside>
+			
+			<aside id="aside">
+				<%@ include file="/WEB-INF/views/include/aside4.jsp" %>
+			</aside>
+			
+			<aside id="aside">
+				<%@ include file="/WEB-INF/views/include/aside5.jsp" %>
+			</aside>
+		
+		<br><br><br><br>
+		</section>
+</div>
+
+<div id = "root2">
+<hr><br>
+</div>
+<div id = "root">		
+		<section id="container">
 		<div id="container_box">
 		
 			<section id="content">
@@ -85,26 +123,26 @@
 			 </div>
 			 
 			 <div class="goodsInfo">
-			  	<p class="gdsName"><span>상품명</span>${view.gdsName}</p>
+			  	<p class="gdsName"><span>상품명</span>${view.gdsName}</p> <hr>
 			  
-			 	 <p class="cateName"><span>카테고리</span>${view.cateName}</p>
+			 	 <p class="cateName"><span>카테고리</span>${view.cateName}</p> <hr>
 			  
 			  	<p class="gdsPrice">
 			   	<span>가격 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsPrice}" /> 원
-			  	</p>
+			  	</p> <hr>
 			  
 			  	<p class="gdsStock">
-			   	<span>재고 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> EA
-			  	</p>
+			   	<span>재고 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsStock}" /> 개
+			  	</p> <hr>
 			  	
 			  	<c:if test="${view.gdsStock !=0 }">
-			  	
+			  	  
 			  	
 				<p class="cartStock">
 				   <span>구입 수량 </span>
 				   <button type="button" class="plus">+</button>
 				   <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
-				   <button type="button" class="minus">-</button>
+				   <button type="button" class="minus">-</button> <hr>
 				   
 				  <!--+ 버튼을 누르면 수량이 증가하되, 상품의 전체 수량보다 커지지 않음  -->
 				   <script>
@@ -112,8 +150,8 @@
 				     var num = $(".numBox").val();
 				     var plusNum = Number(num) + 1;
 				              
-				     if(plusNum >= ${view.gdsStock}) {
-				      $(".numBox").val(num);
+				     if(plusNum >= ${view.gdsStock}) {  
+				      $(".numBox").val(num);  
 				     } else {
 				      $(".numBox").val(plusNum);            
 				     }
@@ -127,14 +165,20 @@
 				      $(".numBox").val(num);
 				     } else {  
 				      $(".numBox").val(minusNum);            
-				     }
+				     }  
 				    });
 				   </script>
 				   
-				</p>
+			<!-- 	</p>   -->
+			
+				<p class="gdsKcal">
+			   	<span>칼로리 </span><fmt:formatNumber pattern="###,###,###" value="${view.gdsKcal}" /> kcal
+			  	</p> <hr>
+			  	
+			  	
 							  
 			  	<p class="addToCart">
-				   <button type="button" class="addCart_btn">카트에 담기</button>
+				   <button type="button" class="addCart_btn">장바구니에 담기</button>
 				 	<script>
 				 		$(".addCart_btn").click(function(){
 				 			var gdsNum = $("#gdsNum").val();
@@ -181,6 +225,11 @@
 				 <div class="gdsDes">${view.gdsDes}</div>
 				</div>
 				
+				<br><br>
+				
+
+
+
 				<div id="reply">
 				
 					<c:if test="${member == null }">
@@ -188,16 +237,59 @@
 					</c:if>
 					
 					<c:if test="${member != null }">
+
+					
 					<section class="replyForm">
 						<form role="form" method="post" autocomplete="off">
+									
+<!-- 							<div class="starRev">
+							  <span class="starR on">별1</span>
+							  <span class="starR">별2</span>
+							  <span class="starR">별3</span>
+							  <span class="starR">별4</span>
+							  <span class="starR">별5</span>
+							  <span class="starR">별6</span>
+							  <span class="starR">별7</span>
+							  <span class="starR">별8</span>
+							  <span class="starR">별9</span>
+							  <span class="starR">별10</span> 
+							</div>-->
+							
+  
+							  
+
+							
+
+							
 							
 							<input type="hidden" name="gdsNum" id="gdsNum" value="${view.gdsNum }">
+
+
+							<div class="score-wrapper">
+
+    							<div class="score" data-max="5" name = "score"></div>
+								
+							</div>
+									
+							<script>
+							
+							$('.starRev span').click(function(){
+								  $(this).parent().children('span').removeClass('on');
+								  $(this).addClass('on').prevAll('span').addClass('on');
+								  return false;
+								});
+							
+							</script>
+							
 							
 							<div class="input_area">
 								<textarea name="repCon" id="repCon"></textarea>
 							</div>
 							  
+							  
+							  
 							<div class="input_area">
+
 								<button type="button" id="reply_btn">작성</button>
 								
 								<script>
@@ -205,11 +297,16 @@
 								    
 								    var formObj = $(".replyForm form[role='form']");
 								    var gdsNum = $("#gdsNum").val();
-								    var repCon = $("#repCon").val()
+								    var repCon = $("#repCon").val();
+								    
+								    var score = $("#score").val()
+								   
 								    
 								    var data = {
 								      gdsNum : gdsNum,
-								      repCon : repCon
+								      repCon : repCon,
+								      
+								      score : score
 								      };
 								    
 								    $.ajax({
@@ -219,6 +316,8 @@
 								     success : function(){
 								      replyList();
 								      $("#repCon").val("");
+								      
+								      $("score").val("");
 								     }
 								    });
 								   });
@@ -296,18 +395,10 @@
 				
 			</section>
 			
-			<aside id="aside">
-				<%@ include file="../include/aside.jsp" %>
-			</aside>  
-			
 		</div>
 	</section>
 	
-	<footer id ="footer">
-		<div id="footer_box">
-			<%@ include file="../include/footer.jsp" %>
-		</div>
-	</footer>
+
 	
 </div>
 
@@ -370,6 +461,10 @@ $(".modal_modify_btn").click(function(){
 
 </script>
 
-
+	<footer id ="footer">
+		<div id="footer_box">
+			<%@ include file="../include/footer.jsp" %>
+		</div>
+	</footer>
 </body>
 </html>

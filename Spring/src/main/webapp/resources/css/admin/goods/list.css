@@ -28,13 +28,12 @@
 	label[for='gdsDes']{display:block; }
 	input { width:150px;}
 	textarea#gdsDes {width:400px; height:180px; }  
-	</style>
 	
-	<style>
+	
 	#container_box table td{ width:100px; }
-	</style>
 	
-	<style>
+	
+	
 	#container_box table { width:900px; }
 	#container_box table th { font-size:20px; font-weight:bold;
 								text-align:center; padding:10px; border-bottom:2px solid #666;}

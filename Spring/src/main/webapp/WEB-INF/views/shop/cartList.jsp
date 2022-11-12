@@ -11,19 +11,44 @@
 	<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<div id = "root">
+<div id = "root2">
 	<header id = "header">
 		<div id = "header_box">
-			<%@ include file = "/WEB-INF/views/include/header.jsp" %>	
+			<%@ include file = "../include/header.jsp" %>	
 		</div>
 	</header>
+</div><br>
+
+
+<div id = "root">
 	
-	<nav id = "nav">
-		<div id = "nav_box">
-			<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
-		</div>
-	</nav>
+	<br><br><br>
 	<section id="container">
+	
+		<aside id="aside">
+			<%@ include file="../include/aside.jsp" %>
+		</aside>  
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside2.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside3.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside4.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside5.jsp" %>
+		</aside>
+		
+		<br><br><br><br>
+		
+		
+	
 		<div id="container_box">
 			
 			<section id="content">
@@ -106,11 +131,12 @@
 			       <span>상품명 </span>${cartList.gdsName}<br />
 			       <span>개당 가격 </span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}" /> 원<br />
 			       <span>구입 수량 </span>${cartList.cartStock} 개<br />
-			       <span>최종 가격 </span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}" /> 원
+			       <span>최종 가격 </span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}" /> 원<br />
+			       <span>총 칼로리 </span><fmt:formatNumber pattern="###,###,###" value="${cartList.gdsKcal * cartList.cartStock}" /> Kcal
 			      </p>
 			      
 			  <div class="delete">
-				 <button type="button" class="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
+				 <button type="button" class="delete_${cartList.cartNum}_btn deletes" data-cartNum="${cartList.cartNum}">삭제</button>
 				 
 				 <script>
 				  $(".delete_${cartList.cartNum}_btn").click(function(){
@@ -141,13 +167,15 @@
 			    </li>
 			    
 			    <c:set var="sum" value="${sum + (cartList.gdsPrice * cartList.cartStock)}" />
+			    <c:set var="sumKcal" value="${sumKcal + (cartList.gdsKcal * cartList.cartStock)}" />
 			    
 			    </c:forEach>
 			   </ul>
 			   
 				<div class="listResult">
 				 <div class="sum">
-					  총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원
+					  총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}" />원 <br />
+					  총 칼로리:<fmt:formatNumber pattern="###,###,###" value="${sumKcal}" />Kcal
 				 </div>
 				 <div class="orderOpne">
 				  	<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
@@ -324,20 +352,19 @@
 				</div>
 
 			</section>
-				
-				<aside id="aside">
-					<%@ include file="/WEB-INF/views/include/aside.jsp" %>
-				</aside>
-					
+
 			</div>
 		</section>
  
+
+	
+</div>
+
 	<footer id ="footer">
 		<div id="footer_box">
 			<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 		</div>
 	</footer> 
 	
-</div>
 </body>
 </html>

@@ -16,10 +16,10 @@
 	<!--상품등록  -->
 	<insert id="register">
 		insert into tbl_goods (gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes,
-								gdsImg, gdsThumbImg) 
+								gdsImg, gdsThumbImg,gdsKcal) 
 	   		values (seq.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes},
-	   		 		#{gdsImg}, #{gdsThumbImg})
-	</insert>
+	   		 		#{gdsImg}, #{gdsThumbImg},${gdsKcal})  
+	</insert>  
 	
 	<!-- 상품 목록 -->   
 <!-- 	<select id="goodslist" resultType="com.spring.domain.GoodsVO">
@@ -53,7 +53,7 @@
 	<!--  상품 조회 + 카테고리 조인 -->
 	<select id="goodsView" resultType="com.spring.domain.GoodsViewVO">
 		select g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate,
-			   g.gdsImg, g.gdsThumbImg
+			   g.gdsImg, g.gdsThumbImg, g.gdsKcal
 			from tbl_goods g
 				inner join goods_category c
 					on g.cateCode = c.cateCode

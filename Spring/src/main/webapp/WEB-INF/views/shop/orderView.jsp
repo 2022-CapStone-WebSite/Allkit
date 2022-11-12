@@ -11,20 +11,42 @@
 
 </head>
 <body>
-<div id = "root">
+<div id = "root2">
 	<header id = "header">
 		<div id = "header_box">
 			<%@ include file = "/WEB-INF/views/include/header.jsp" %>	
 		</div>
 	</header>
+</div><br>
+
+<div id = "root">
 	
-	<nav id = "nav">
-		<div id = "nav_box">
-			<%@ include file = "/WEB-INF/views/include/nav.jsp" %>
-		</div>
-	</nav>
-	
+	<br><br><br>
 	<section id="container">
+	
+		<aside id="aside">
+			<%@ include file="../include/aside.jsp" %>
+		</aside>  
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside2.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside3.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside4.jsp" %>
+		</aside>
+			
+		<aside id="aside">
+			<%@ include file="/WEB-INF/views/include/aside5.jsp" %>
+		</aside>
+		
+		<br><br><br><br>
+		
+		
 		<div id="container_box">
 		
 			<section id="content">
@@ -36,9 +58,9 @@
 			    <p><span>수령인</span>${orderView.orderRec}</p>
 			    <p><span>주소</span>(${orderView.userAddr1}) ${orderView.userAddr2} ${orderView.userAddr3}</p>
 			    <p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" /> 원</p>
-			   	<p><span>상태</span>${orderList.delivery }</p>
+			   	<p><span>상태</span>${orderView.delivery }</p>
 			   
-			   </c:if>
+			   </c:if> 
 			   
 			  </c:forEach>
 			 </div>
@@ -61,20 +83,21 @@
 			  </c:forEach>
 			 </ul>
 			</section>
-			
-			<aside id="aside">
-				<%@ include file="/WEB-INF/views/include/aside.jsp" %>
-			</aside>
+
 			
 		</div>
 	</section>
 	  
+
+	
+</div>
+
 	<footer id ="footer">
 		<div id="footer_box">
 			<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 		</div>
 	</footer> 
 	
-</div>
+	
 </body>
 </html>

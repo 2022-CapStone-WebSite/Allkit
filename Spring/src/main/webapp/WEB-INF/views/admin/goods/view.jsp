@@ -66,6 +66,12 @@
 			</div>
 			
 			<div class="inputArea">
+			 <label for="gdsStock">칼로리</label>
+			 <span>${goods.gdsKcal}</span>
+			</div>
+			
+			
+			<div class="inputArea">
 			 <label for="gdsDes">상품소개</label>
 			 <%-- <span>${goods.gdsDes}</span> --%>
 			 

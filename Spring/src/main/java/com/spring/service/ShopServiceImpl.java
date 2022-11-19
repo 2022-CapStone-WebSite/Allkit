@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.spring.domain.CartListVO;
 import com.spring.domain.CartVO;
+import com.spring.domain.Criteria;
+import com.spring.domain.GoodsVO;  
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.MemberVO;
 import com.spring.domain.OrderDetailVO;
@@ -16,12 +18,13 @@ import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
+import com.spring.domain.SearchCriteria;
 import com.spring.persistence.MemberDAO;
 import com.spring.persistence.ShopDAO;
 
 @Service
 public class ShopServiceImpl implements ShopService {
-	   
+    	   
 	@Inject
 	private ShopDAO dao;
 	   
@@ -29,16 +32,32 @@ public class ShopServiceImpl implements ShopService {
 	public List<GoodsViewVO> list(int cateCode, int level) throws Exception{
 		int cateCodeRef = 0;
 		
-		if(level == 1) {
+		if(level == 1) { 
 			
 			cateCodeRef = cateCode;
 			return dao.list(cateCode,cateCodeRef);
 		}else
-		{
-			return dao.list(cateCode);
+		{ 
+			return dao.list(cateCode);      
 		}
 	}
 	
+	
+//	public List<GoodsViewVO> list(int cateCode, int level,Criteria cri) throws Exception{
+//		int cateCodeRef = 0;
+//		
+//		if(level == 1) { 
+//			
+//			cateCodeRef = cateCode;
+//			return dao.list(cateCode,cateCodeRef,cri);
+//		}else
+//		{ 
+//			return dao.list(cateCode,cri);        
+//		}
+//	}
+	
+	   
+	 
 	//상품조회
 	@Override
 	public GoodsViewVO goodsView(int gdsNum) throws Exception{
@@ -123,6 +142,35 @@ public class ShopServiceImpl implements ShopService {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception{
 		return dao.orderView(order);
 	}
+	  
+	/*
+	 * @Override public int count() throws Exception{ return dao.count(); }
+	 * 
+	 * @Override public List<GoodsViewVO> listPage(int displayPost, int postNum)
+	 * throws Exception { return dao.listPage(displayPost, postNum); }
+	 */
+
 	
-		
+	
+	
+	
+	
+	    
+	@Override
+	public int listcount() throws Exception{   
+		return dao.listcount();   
+	}
+    
+	  
+	@Override  
+	  public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception{
+		return dao.listSearch(scri);    
+	}   
+	  
+	@Override
+	  public int countSearch(SearchCriteria scri) throws Exception{
+		return dao.countSearch(scri);
+	}   
+  
+    	
 }

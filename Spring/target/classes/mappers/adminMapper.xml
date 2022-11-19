@@ -41,6 +41,11 @@
 	</select>
 	
 	
+
+	
+	
+
+	
 	<!-- 상품 조회 -->
 <!-- 	<select id="goodsView" resultType="com.spring.domain.GoodsVO">
 		select gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate

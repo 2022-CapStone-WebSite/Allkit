@@ -3,7 +3,8 @@ package com.spring.service;
 import java.util.List;
 
 import com.spring.domain.CategoryVO;
-import com.spring.domain.GoodsVO;
+
+import com.spring.domain.GoodsVO;  
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
@@ -46,5 +47,8 @@ public interface AdminService {
 		
 	//소감(댓글)삭제
 	public void deleteReply(int repNum) throws Exception;
+	
+	
+
 		
 }

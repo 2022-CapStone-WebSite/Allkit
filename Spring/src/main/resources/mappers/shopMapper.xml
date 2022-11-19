@@ -7,27 +7,119 @@
 
 <!-- 카테고리별 상품 리스트: 1차 -->
 <select id="list_1" resultType="com.spring.domain.GoodsViewVO">
-select
-    g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName,
-    gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
-        from tbl_goods g
-            inner join goods_category c
-                on g.cateCode = c.cateCode           
-            where g.cateCode = #{cateCode}
-             or c.cateCodeRef = #{cateCodeRef}
+<!-- select -->
+<!--     g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, -->
+<!--     gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg -->
+<!--         from tbl_goods g -->
+<!--             inner join goods_category c -->
+<!--                 on g.cateCode = c.cateCode            -->
+<!--             where g.cateCode = #{cateCode} -->
+<!--              or c.cateCodeRef = #{cateCodeRef} -->
+                
+                 
+select       
+    tg.gdsNum, tg.gdsName, tg.cateCode, tg.gdsPrice, tg.gdsStock, tg.gdsDes, tg.gdsImg, tg.gdsDate, tg.gdsThumbImg,
+        tg.cateCodeRef, tg.cateName
+    from (
+        select g.gdsNum, g.gdsName, g.cateCode, g.gdsPrice,g.gdsStock,g.gdsDes,g.gdsImg,g.gdsDate,g.gdsThumbImg,
+        c.cateCodeRef, c.cateName, row_number() over(order by gdsNum desc) as rNum 
+        from tbl_goods g inner join goods_category c
+            on g.cateCode = c.cateCode
+            where g.cateCode = #{cateCode}   
+            or c.cateCodeRef = #{cateCodeRef}
+        ) tg
+        where rNum between 1 and 10
+<!--         where rNum between #{rowStart} and #{rowEnd} -->  
+        order by gdsNum desc  
+  
 </select>
-
+ 
 
 <!-- 카테고리별 상품 리스트 : 2차 분류 -->
 <select id="list_2" resultType="com.spring.domain.GoodsViewVO">
-select
-    g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName,
-    gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
-        from tbl_goods g
-            inner join goods_category c
-                on g.cateCode = c.cateCode           
-            where g.cateCode = #{cateCode}
+<!-- select -->
+<!--     g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, -->
+<!--     gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg -->
+<!--         from tbl_goods g -->
+<!--             inner join goods_category c -->
+<!--                 on g.cateCode = c.cateCode            -->
+<!--             where g.cateCode = #{cateCode} -->
+  
+ 
+   select     
+    tg.gdsNum, tg.gdsName, tg.cateCode, tg.gdsPrice, tg.gdsStock, tg.gdsDes, tg.gdsImg, tg.gdsDate, tg.gdsThumbImg,
+        tg.cateCodeRef, tg.cateName
+    from (
+        select g.gdsNum, g.gdsName, g.cateCode, g.gdsPrice,g.gdsStock,g.gdsDes,g.gdsImg,g.gdsDate,g.gdsThumbImg,
+        c.cateCodeRef, c.cateName, row_number() over(order by gdsNum desc) as rNum 
+        from tbl_goods g inner join goods_category c
+            on g.cateCode = c.cateCode
+            where g.cateCode = #{cateCode}   
+        ) tg     
+        where rNum between 1 and 10        
+<!--         where rNum between #{rowStart} and #{rowEnd} -->
+        order by gdsNum desc  
 </select>
+
+
+<!-- 검색창 -->
+<select id="listSearch" resultType="com.spring.domain.GoodsViewVO" 
+parameterType="com.spring.domain.SearchCriteria">
+<!-- select      -->
+<!--     gdsNum, gdsName, cateCode, gdsPrice,gdsStock,gdsDes,gdsImg,gdsDate,gdsThumbImg,gdsKcal -->
+<!--     from ( -->
+<!--         select gdsNum, gdsName, cateCode, gdsPrice,gdsStock,gdsDes,gdsImg,gdsDate,gdsThumbImg,gdsKcal, -->
+<!--             row_number() over(order by gdsNum desc) as rNum  -->
+<!--         from tbl_goods -->
+<!--         	<include refid="search"></include> -->
+<!--         ) tg -->
+<!--     where rNum between #{rowStart} and #{rowEnd} -->
+<!--         order by gdsNum desc -->
+        
+               
+        
+<!--         select        -->
+<!--     tg.gdsNum, tg.gdsName, tg.cateCode, tg.gdsPrice, tg.gdsStock, tg.gdsDes, tg.gdsImg, tg.gdsDate, tg.gdsThumbImg, -->
+<!--         tg.cateCodeRef, tg.cateName -->
+<!--     from ( -->
+<!--         select g.gdsNum, g.gdsName, g.cateCode, g.gdsPrice,g.gdsStock,g.gdsDes,g.gdsImg,g.gdsDate,g.gdsThumbImg, -->
+<!--         c.cateCodeRef, c.cateName, row_number() over(order by gdsNum desc) as rNum  -->
+<!--         from tbl_goods g inner join goods_category c -->
+<!--             on g.cateCode = c.cateCode -->
+<!--             where g.cateCode = #{cateCode}     -->
+<!--             or c.cateCodeRef = #{cateCodeRef} -->
+            
+<!--             AND <include refid="search"></include>         -->
+         
+<!--         ) tg -->
+<!--         where rNum between #{rowStart} and #{rowEnd} -->
+<!--         order by gdsNum desc  -->
+        
+         
+        
+</select> 
+
+<!-- <sql id="search"> -->
+<!--  <if test="searchType != null"> -->
+<!--   <if test="searchType == 'p'.toString()">gdsName like '%' || #{gdsName} || '%'</if> -->
+
+<!--  </if> -->
+<!-- </sql> -->
+
+  
+<!-- <select id="countSearch" resultType="int"> -->
+<!-- 	select count(gdsNum) -->
+<!-- 		from tbl_goods	 -->
+<!-- 			<include refid="search"></include> -->
+<!-- 	<![CDATA[ -->
+<!-- 		and gdsNum > 0 -->
+<!-- 	]]>  -->
+	
+<!-- </select> -->
+
+  
+
+   
 
 
 <!-- 상품 소감(댓글) 작성 -->
@@ -123,7 +215,7 @@ from tbl_cart c
  from tbl_order 
      where userId = #{userId}
 </select>
-
+ 
 <!-- 특정 주문 목록 -->
 <select id="orderView" resultType="com.spring.domain.OrderListVO">
 select
@@ -142,6 +234,11 @@ from tbl_order o
 
 
 </select>
+
+
+	<!--페이징  -->
+	
+
         
 
 </mapper>

@@ -4,19 +4,27 @@ import java.util.List;
 
 import com.spring.domain.CartListVO;
 import com.spring.domain.CartVO;
+  
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderDetailVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
+import com.spring.domain.SearchCriteria;
+import com.spring.domain.Criteria;
+import com.spring.domain.GoodsVO;
 
 public interface ShopService {
 
-	
-	//카테고리별 상품 리스트
+	 
+	//카테고리별 상품 리스트 
 	public List<GoodsViewVO> list(int cateCode, int level) throws Exception;
 	
+//	public List<GoodsViewVO> list(int cateCode, int level,Criteria cri) throws Exception;
+	  
+	
+	 
 	//상품조회
 	public GoodsViewVO goodsView(int gdsNum) throws Exception;
 	
@@ -26,7 +34,7 @@ public interface ShopService {
 	//상품 댓글 목록
 	public List<ReplyListVO> replyList(int gdsNum) throws Exception;
 	
-	//상품 댓글 삭제
+	//상품 댓글 삭제  
 	public void deleteReply(ReplyVO reply) throws Exception;
 	
 	//아이디 체크
@@ -57,4 +65,23 @@ public interface ShopService {
 	
 	//특정 주문 목록
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	
+    
+	/*
+	 * public int count() throws Exception;
+	 * 
+	 * public List<GoodsViewVO> listPage(int displayPost, int postNum) throws
+	 * Exception;
+	 */
+	
+//	public List<GoodsViewVO> list(int cateCode, int level) throws Exception;
+	
+	
+	 
+	  public int listcount() throws Exception; 
+	  public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception;
+	  public int countSearch(SearchCriteria scri) throws Exception;  
+	
+
+	
 }

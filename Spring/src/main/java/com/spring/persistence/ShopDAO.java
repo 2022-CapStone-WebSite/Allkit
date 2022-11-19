@@ -3,21 +3,28 @@ package com.spring.persistence;
 import java.util.List;
 
 import com.spring.domain.CartListVO;
-import com.spring.domain.CartVO;
+import com.spring.domain.CartVO; 
+import com.spring.domain.Criteria;
+import com.spring.domain.GoodsVO;
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderDetailVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
+import com.spring.domain.SearchCriteria;
 
 public interface ShopDAO {
 	
 	//카테고리 상품 리스트 1차 분류
 	public List<GoodsViewVO> list(int cateCode, int cateCodeRef) throws Exception;
 	
+//	public List<GoodsViewVO> list(int cateCode, int cateCodeRef,Criteria cri) throws Exception;
+	
 	//카테고리 상품 리스트 2차분류
-	public List<GoodsViewVO> list(int cateCode) throws Exception;
+	public List<GoodsViewVO> list(int cateCode) throws Exception; 
+	
+//	public List<GoodsViewVO> list(int cateCode, Criteria cri) throws Exception; 
 
 	
 	//상품 조회
@@ -61,5 +68,15 @@ public interface ShopDAO {
 	
 	//특정 주문 목록
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	
+	  
+     
+	 
+	  public int listcount() throws Exception;	    
+	  public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception;
+	  public int countSearch(SearchCriteria scri) throws Exception;
+	    
+
+		
 
 }

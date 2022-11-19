@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.domain.CategoryVO;
+   
 import com.spring.domain.GoodsVO;
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderListVO;
@@ -279,4 +280,13 @@ public class AdminController {
 		return "redirect:/admin/shop/allReply";
 		
 	}
+	
+	
+	
+
+	
+	
+	
+	
+	
 }  

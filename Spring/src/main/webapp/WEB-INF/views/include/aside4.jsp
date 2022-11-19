@@ -6,12 +6,12 @@
 	
 		<li>  
 
-		 	<a href=""><span class=""></span>게시판 </a>  
+		 	<a href="/board/listSearch"><span class=""></span>게시판 </a>  
 		</li>
-		   
+		    
 	
 		
-		
+		  
 	
 		
 	

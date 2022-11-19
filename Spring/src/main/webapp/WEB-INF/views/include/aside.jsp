@@ -9,7 +9,8 @@
 		 	<a href=""><span class="glyphicon glyphicon-menu-hamburger"></span>카테고리 </a>  
 			<ul class="low">
 			<!-- <a href="/shop/list?c=100&l=1">제품</a> -->
-				<li><a href="/shop/list?c=101&l=2">닭가슴살</a></li>
+			
+				<li><a href="/shop/list?c=101&l=2">닭가슴살</a></li>      
 				<li><a href="/shop/list?c=102&l=2">즉식 간편식</a></li>
 				<li><a href="/shop/list?c=103&l=2">도시락,볶음밥</a></li>
 				<li><a href="/shop/list?c=104&l=2">소고기</a></li>

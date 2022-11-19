@@ -3,6 +3,7 @@ package com.spring.persistence;
 import java.util.List;
 
 import com.spring.domain.CategoryVO;
+
 import com.spring.domain.GoodsVO;
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderListVO;
@@ -19,6 +20,8 @@ public interface AdminDAO {
 	
 	//상품목록
 	public List<GoodsViewVO> goodslist() throws Exception;
+	
+		
 	
 	//상품조회  + 카테고리 조인
 	public GoodsViewVO goodsView(int gdsNum) throws Exception; 
@@ -43,7 +46,16 @@ public interface AdminDAO {
 	
 	//모든 소감(댓글)
 	public List<ReplyListVO> allReply() throws Exception;
+	
+	
 	//소감(댓글)삭제
 	public void deleteReply(int repNum) throws Exception;
+	
+	
+	
+	
+	
+  
+	
 
 }

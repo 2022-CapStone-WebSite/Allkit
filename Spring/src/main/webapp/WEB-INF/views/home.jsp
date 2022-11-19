@@ -90,7 +90,7 @@
 		}
 		  
 		  
-		/* 이상품어때요 css */
+		/* 이상품어때요 css */ 
 		span#sug2{position:relative; left:13%;}      
 		span#sug3{position:relative; left:24%;} 
 		 
@@ -166,8 +166,8 @@
 	</header>
 	
 
-</div>
-
+</div>  
+<br><br><br><br>
 <div id = "root3">
 
 
@@ -220,15 +220,15 @@
 	    <!-- Wrapper for slides -->   
 	    <div class="carousel-inner">       
 	      <div class="item active">    
-	       <a href="/shop/list?c=101&l=2"><img class="imgsize" src="../resources/images/one.PNG" alt="Los Angeles" style="width:2000px; height:300px;"></a>
+	       <a href="/shop/list?c=101&l=2"><img class="imgsize" src="../resources/images/one.PNG" alt="Los Angeles" style="width:100%; height:200px;"></a>
 	      </div>
 	  
 	      <div class="item">    
-	        <a href="/shop/list?c=300&l=1"><img class="imgsize" src="../resources/images/two.png" alt="Chicago" style="width:2000px; height:300px;"></a>
+	        <a href="/shop/list?c=300&l=1"><img class="imgsize" src="../resources/images/two.png" alt="Chicago" style="width:100%; height:200px;"></a>
 	      </div>
 	        
 	      <div class="item">   
-	        <a href="/shop/list?c=200&l=1"><img class="imgsize" src="../resources/images/three.png" alt="New york" style="width:2000px; height:300px;"></a>
+	        <a href="/shop/list?c=200&l=1"><img class="imgsize" src="../resources/images/three.png" alt="New york" style="width:100%; height:200px;"></a>
 	      </div>
 	    </div>  
 	
@@ -246,6 +246,9 @@
 </div>
 
 <br><br><br><br><br><br>
+
+ 
+
 		<h2 class="bold">이 상품 어때요?</h2>
 		<h4 class="bold" style="color:gray">조리 간편 및 추천 상품</h4>
 
@@ -347,7 +350,7 @@
 			<section id="content">
 
 			</section>
-		
+		 
 		</div>
 	</section>
 	

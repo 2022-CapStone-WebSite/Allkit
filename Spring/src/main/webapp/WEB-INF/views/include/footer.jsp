@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+
+    
 <ul class = "center">
-	<li class = "cus">고객행복센터</li>
+	<li class = "cus">고객행복센터</li>  
 	<li class = "call">1600-0000</li>
 	<li>(월~토요일 오전 7시 ~ 오후 6시)<br><br>
 	</li>

@@ -10,16 +10,19 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.domain.CartListVO;
 import com.spring.domain.CartVO;
+import com.spring.domain.Criteria;
+import com.spring.domain.GoodsVO;
 import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderDetailVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
-
+import com.spring.domain.SearchCriteria;
+  
 @Repository
 public class ShopDAOImpl implements ShopDAO {
-	
+	  
 	@Inject
 	private SqlSession sql; 
 	
@@ -35,19 +38,50 @@ public class ShopDAOImpl implements ShopDAO {
 		
 		map.put("cateCode", cateCode);
 		map.put("cateCodeRef", cateCodeRef);
+	
+	  
 		
 		return sql.selectList(namespace + ".list_1" , map);  
-	}
-		
-		
+	}  
+	
+	
+//	@Override 
+//	public List<GoodsViewVO> list(int cateCode, int cateCodeRef,Criteria cri) throws Exception{
+//	
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		
+//		map.put("cateCode", cateCode);
+//		map.put("cateCodeRef", cateCodeRef);
+//		map.put("cri",cri);  
+//	
+//	   
+//		 
+//		return sql.selectList(namespace + ".list_1" , map);  
+//	}
+	
+	
 	
 	
 	//카테고리 상품 리스트 2차분류
 	@Override
 	public List<GoodsViewVO> list(int cateCode) throws Exception{
-		return sql.selectList(namespace + ".list_2", cateCode);
+
+		   
+		return sql.selectList(namespace + ".list_2", cateCode);  
 	}
+	   
 	
+//	@Override
+//	public List<GoodsViewVO> list(int cateCode,Criteria cri) throws Exception{
+//
+//		HashMap<String, Object> maps = new HashMap<String, Object>();
+//		
+//		maps.put("cateCode", cateCode);
+//		maps.put("cri",cri);    
+//		
+//		return sql.selectList(namespace + ".list_2", maps);  
+//	}
+	  
 	
 	//상품조회
 	@Override
@@ -133,4 +167,45 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<OrderListVO> orderView(OrderVO order) throws Exception{
 		return sql.selectList(namespace + ".orderView", order);
 	}
+	
+	  
+	
+	/*
+	 * @Override public int count() throws Exception{ return sql.selectOne(namespace
+	 * + ".count"); }
+	 * 
+	 * 
+	 * @Override public List<GoodsViewVO> listPage(int displayPost, int postNum)
+	 * throws Exception {
+	 * 
+	 * HashMap<String, Integer> data = new HashMap<String, Integer>();
+	 * 
+	 * data.put("displayPost", displayPost); data.put("postNum", postNum);
+	 * 
+	 * return sql.selectList(namespace + ".listPage", data); }
+	 */
+	 
+	
+	
+	
+
+	    
+	 
+	@Override 
+	public int listcount() throws Exception{
+		return sql.selectOne(namespace + ".listCount");    
+	}
+	    
+	     
+	@Override
+	  public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception{
+		return sql.selectList(namespace + ".listSearch", scri);
+	}
+	  
+	@Override
+	  public int countSearch(SearchCriteria scri) throws Exception{
+		return sql.selectOne(namespace + ".countSearch", scri);
+	}
+    
+	
 }

@@ -68,7 +68,7 @@
 				<li>
 				 <a href="/admin/index"><span class="glyphicon glyphicon-user white"></span>&nbsp관리자 화면 ${member.userName}님 환영합니다.</a> 
 				</li> 
-			</c:if>
+			</c:if> 
 			
 			<c:if test="${member.verify != 9 }">
 				

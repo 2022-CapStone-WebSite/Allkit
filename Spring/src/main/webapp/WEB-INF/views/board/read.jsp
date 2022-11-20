@@ -124,7 +124,7 @@
 		<c:if test="${member != null }">
 				<c:if test="${member.verify == 9}">
 			<form role="form" method="post" autocomplete="off">
-				<input type="hidden" id="page" name="page" value="${scri.page }"
+				<input type="hidden"  id="page" name="page" value="${scri.page }" 
 					readonly="readonly " /> <input type="hidden" id="perPageNum"
 					name="perPageNum" value="${scri.perPageNum }" readonly="readonly " />
 
@@ -153,7 +153,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="content" class="col-sm-2 control-label">글 내용</label>
+				<label for="content" class="col-sm-2 control-label">글 내용1</label>
 				<textarea id="content" name="content" class="form-control"
 					style="resize: none; overflow: scroll; height: 200px"
 					readonly="readonly">${read.content}</textarea>

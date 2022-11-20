@@ -27,8 +27,18 @@ public class BoardDAOImpl implements BoardDAO {
 		 public void write(BoardVO vo) throws Exception {
 		  sql.insert(namespace + ".write", vo);
 		 }
+		 
+		 
+		 
+		 @Override 
+		 public void boardHit (int bno) throws Exception{
+			 sql.update(namespace + ".boardHit",bno);  
+		 }
+		 
+		 
+		 
+		 
 		 // 조회
-
 		 @Override
 		 public BoardVO read(int bno) throws Exception {
 		  return sql.selectOne(namespace + ".read", bno);
@@ -75,6 +85,8 @@ public class BoardDAOImpl implements BoardDAO {
 			  return sql.selectOne(namespace + ".countSearch", scri);
 		  }
 		  
-		  
+	
+		   
+		   
 
 }

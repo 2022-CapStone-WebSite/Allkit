@@ -137,6 +137,7 @@
 						<th>가격(원)</th>
 						<th>수량</th> 
 						
+						
 					</tr>
 				</thead>
 				<tbody>

@@ -33,4 +33,7 @@ public interface BoardDAO {
 		 
 		 //검색 결과 갯수
 		 public int countSearch(SearchCriteria scri) throws Exception;
+		 
+		 //게시판 조회수
+		 public void boardHit (int bno) throws Exception;
 }

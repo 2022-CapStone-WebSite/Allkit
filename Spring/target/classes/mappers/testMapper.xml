@@ -26,6 +26,16 @@
    where bno = #{bno}  
  </update>
  
+  <!-- 게시판 조회수 --> 
+  <update id="boardHit" parameterType="int">
+  	update myBoard 
+  	 set 
+  		viewCnt = viewCnt + 1
+  	where bno = #{bno}
+  </update>
+  
+  
+ 
  <!-- 삭제 -->
  <delete id="delete">
   delete from

@@ -156,7 +156,7 @@
   
   <table class="table table-hover">
   <tread> 
-   <tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성일자</th></tr>
+   <tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성일자</th><th>조회수</th></tr>
    </tread>
    
    <!-- 목록 시작 -->
@@ -176,8 +176,8 @@
     <td>${list.writer}</td>
     
     <td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd" /></td>
-   </tr>
-   </c:forEach>
+    <td><c:out value="${list.viewCnt}"/></td>    
+   </c:forEach> 
    <!-- 목록 끝 -->
    
       <div class="search row one">

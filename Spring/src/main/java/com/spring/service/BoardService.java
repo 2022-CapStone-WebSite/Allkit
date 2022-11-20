@@ -33,5 +33,7 @@ public interface BoardService {
 	
 	//검색 결과 갯수
 	public int countSearch(SearchCriteria scri) throws Exception;
+	
+
 
 }

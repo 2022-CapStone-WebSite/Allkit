@@ -12,6 +12,9 @@ import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
 import com.spring.domain.SearchCriteria;
+import com.spring.domain.SelectVO;
+import com.spring.domain.UpdateReplyVO;
+import com.spring.persistence.ShopDAO;
 import com.spring.domain.Criteria;
 import com.spring.domain.GoodsVO;
 
@@ -54,6 +57,7 @@ public interface ShopService {
 	
 	//주문 정보  
 	public void orderInfo(OrderVO order) throws Exception;
+	
 	//주문 상세 정보
 	public void orderInfo_Details(OrderDetailVO orderDetail) throws Exception;
 		
@@ -63,25 +67,38 @@ public interface ShopService {
 	//주문 목록
 	public List<OrderVO> orderList(OrderVO order) throws Exception;
 	
+	//주문목록페이징
+	public List<OrderVO> listPageOrder(Criteria cri) throws Exception;
+	
+	//주문목록갯수
+	public int listCountOrder() throws Exception;
+	
 	//특정 주문 목록
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+
+ 	/* 평점 평균 구하기 */
+	public Double getRatingAverage(int gdsNum);
 	
-    
-	/*
-	 * public int count() throws Exception;
-	 * 
-	 * public List<GoodsViewVO> listPage(int displayPost, int postNum) throws
-	 * Exception;
-	 */
-	
-//	public List<GoodsViewVO> list(int cateCode, int level) throws Exception;
+	/* 평점 평균 반영하기 */
+	public int updateRating(UpdateReplyVO vo);
 	
 	
+	
+	//평점순 상품 정보     
+	public List<SelectVO> likeSelect();     
 	 
-	  public int listcount() throws Exception; 
-	  public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception;
-	  public int countSearch(SearchCriteria scri) throws Exception;  
+	//낮은가격순 상품 정보     
+	public List<SelectVO> lowPrice();  
+	
+	//높은가격순 상품 정보     
+	public List<SelectVO> highPrice();   
+	    
+	
+	public int listcount() throws Exception; 
+	public List<GoodsViewVO> listSearch(SearchCriteria scri) throws Exception;
+    public int countSearch(SearchCriteria scri) throws Exception;  
 	
 
+ 
 	
 }

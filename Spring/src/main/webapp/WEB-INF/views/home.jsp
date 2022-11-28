@@ -90,10 +90,10 @@
 		}
 		  
 		  
-		/* 이상품어때요 css */ 
-		span#sug2{position:relative; left:13%;}      
-		span#sug3{position:relative; left:24%;} 
-		 
+		/* 이상품어때요 css */  
+		span#sug2{position:relative; left:13%;}          
+		span#sug3{position:relative; left:25%;} 
+		      
 		span#sug5{position:relative; left:25%;}  
 		span#sug6{position:relative; left:47%;} 
   
@@ -104,8 +104,8 @@
 		span#min2{position:relative; left:13%;}      
 		span#min3{position:relative; left:24%;} 
 		 
-		span#min5{position:relative; left:23%;}  
-		span#min6{position:relative; left:45%;} 
+		span#min5{position:relative; left:24%;}  
+		span#min6{position:relative; left:45%;}     
 		
 		span#min4,span#min5,span#min6{font-weight:bold;}
 		
@@ -218,13 +218,13 @@
 	    </ol>  
 	
 	    <!-- Wrapper for slides -->   
-	    <div class="carousel-inner">       
+	    <div class="carousel-inner">         
 	      <div class="item active">    
-	       <a href="/shop/list?c=101&l=2"><img class="imgsize" src="../resources/images/one.PNG" alt="Los Angeles" style="width:100%; height:200px;"></a>
+	       <a href="/shop/list?c=300&l=1"><img class="imgsize" src="../resources/images/one.PNG" alt="Los Angeles" style="width:100%; height:200px;"></a>
 	      </div>
-	  
+	   
 	      <div class="item">    
-	        <a href="/shop/list?c=300&l=1"><img class="imgsize" src="../resources/images/two.png" alt="Chicago" style="width:100%; height:200px;"></a>
+	        <a href="/shop/list?c=101&l=2"><img class="imgsize" src="../resources/images/two.png" alt="Chicago" style="width:100%; height:200px;"></a>
 	      </div>
 	        
 	      <div class="item">   
@@ -251,7 +251,7 @@
 
 		<h2 class="bold">이 상품 어때요?</h2>
 		<h4 class="bold" style="color:gray">조리 간편 및 추천 상품</h4>
-
+  
 <div id = "root">	 
 
 <br>
@@ -326,12 +326,12 @@
 	<br><br><br><br>  
 	
 	  
-	<a href="/"><img src="../resources/images/salad.jpg" class="rounded float-start" alt="..."  style="width : 30%; margin-right:10px;" >1</a>
-	<a href="/shop/view?n=49"><img src="../resources/images/salad2.jpg"  class="rounded mx-auto d-block" alt="..." style="width : 30%; margin-right:10px;" >2</a>
-	<a href="/"><img src="../resources/images/salad3.png" class="rounded float-end" alt="..." style="width : 30%; margin-right:10px;"  >3</a>
+	<a href="/"><img src="../resources/images/salad.jpg" class="rounded float-start" alt="..."  style="width : 30%; margin-right:10px;" ></a>
+	<a href="/shop/view?n=49"><img src="../resources/images/salad2.jpg"  class="rounded mx-auto d-block" alt="..." style="width : 30%; margin-right:10px;" ></a>
+	<a href="/"><img src="../resources/images/salad3.png" class="rounded float-end" alt="..." style="width : 30%; margin-right:10px;"  ></a>
 	  
-		<br><br>   
-		
+		<br><br>      
+		 
 	 <a href="/"><span id = "salad">[올킷]양상추샐러드</span></a>
 	 <a href="/shop/view?n=49"><span id = "salad2">[올킷]소불고기샐러드</span></a>
 	 <a href="/"><span id = "salad3">[올킷]콩볶음샐러드</span></a>
@@ -350,7 +350,7 @@
 			<section id="content">
 
 			</section>
-		 
+		  
 		</div>
 	</section>
 	

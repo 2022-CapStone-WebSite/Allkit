@@ -7,7 +7,7 @@ import com.spring.domain.Criteria;
 import com.spring.domain.SearchCriteria;
 
 public interface BoardDAO {
-	// 작성  
+	     // 작성  
 		 public void write(BoardVO vo) throws Exception;
 		 
 		 // 조회

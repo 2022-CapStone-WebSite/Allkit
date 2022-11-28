@@ -32,6 +32,7 @@ import com.spring.domain.PageMaker;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
 import com.spring.domain.SearchCriteria;
+import com.spring.domain.SelectVO;
 import com.spring.service.ShopService;
 
 @Controller
@@ -42,13 +43,47 @@ public class ShopController {
 
 	@Inject
 	ShopService service; 
-	            
+	        
+	//베스트 상품
+	@RequestMapping(value = "/best", method = RequestMethod.GET)
+	public void getbest(Model model) throws Exception {
+		logger.info("get best"); 
+		model.addAttribute("best",service.likeSelect()); 
+  
+	} 
+	   
+	//낮은가격순 상품
+	@RequestMapping(value = "/lowPrice", method = RequestMethod.GET)
+	public void getlow(Model model) throws Exception {
+		logger.info("get low"); 
+  
+		model.addAttribute("low",service.lowPrice());
+	} 
 	
+	//높은가격순 상품
+	@RequestMapping(value = "/highPrice", method = RequestMethod.GET)
+	public void gethigh(Model model) throws Exception {
+		logger.info("get high"); 
+  
+		model.addAttribute("high",service.highPrice());
+	} 
+	
+	
+	
+	//신상품(야매)
+	@RequestMapping(value = "/newProduct", method = RequestMethod.GET)
+	public void getProduct(Model model) throws Exception {
+		logger.info("get Product");
 	  
+	}  
+	
+	//고객센터(야매)
+	@RequestMapping(value = "/serviceCenter", method = RequestMethod.GET)
+	public void getCenter(Model model) throws Exception {
+		logger.info("get service");
+	   
+	}    
 
-	 
-	
-	
 	//카테고리별 상품리스트 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void getList(@RequestParam("c") int cateCode,
@@ -63,14 +98,6 @@ public class ShopController {
   
 		  
 	} 
-	
- 
-	     
-	  
-
-	
-
-	 
 	//상품 조회 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public void getView(@RequestParam("n") int gdsNum, Model model) throws Exception {
@@ -103,10 +130,7 @@ public class ShopController {
 	   logger.info("regist reply");
 	   
 	   MemberVO member = (MemberVO)session.getAttribute("member");
-	   reply.setUserId(member.getUserId());
-
-	  	   
-	     
+	   reply.setUserId(member.getUserId());	     
 	   service.registReply(reply);
 	}   
 	
@@ -270,6 +294,26 @@ public class ShopController {
 		
 		model.addAttribute("orderList",orderList);
 	}
+	
+	//주문 목록 + 페이징
+	@RequestMapping(value = "/listPageOrder", method = RequestMethod.GET)
+	public void listPageOrder(@ModelAttribute("cri") Criteria cri, HttpSession session,OrderVO order, Model model) throws Exception{
+		logger.info("get listPageOrder");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		order.setUserId(userId);
+		
+		List<OrderVO> listPageOrder = service.listPageOrder(cri);
+		model.addAttribute("listPageOrder", listPageOrder);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listCountOrder());
+		model.addAttribute("pageMaker",pageMaker);
+	}
+
 	
 	//주문 상세 목록
 	@RequestMapping(value = "/orderView", method = RequestMethod.GET)

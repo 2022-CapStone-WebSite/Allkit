@@ -13,6 +13,7 @@ import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
+import com.spring.domain.SelectVO;
 import com.spring.persistence.AdminDAO;
       
 @Service
@@ -92,9 +93,9 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteReply(int repNum) throws Exception{
 		dao.deleteReply(repNum);
 	}
-	
-	
-    
-	
+	 
+
+      
+
 	
 }

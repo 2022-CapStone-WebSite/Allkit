@@ -153,7 +153,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="content" class="col-sm-2 control-label">글 내용1</label>
+				<label for="content" class="col-sm-2 control-label">글 내용</label>
 				<textarea id="content" name="content" class="form-control"
 					style="resize: none; overflow: scroll; height: 200px"
 					readonly="readonly">${read.content}</textarea>
@@ -358,6 +358,9 @@
 							value="${scri.searchType}" readonly="readonly" /> <input
 							type="hidden" id="keyword" name="keyword" value="${scri.keyword}"
 							readonly="readonly" />
+							
+									<c:if test="${member != null }">
+										<c:if test="${member.verify == 9}">
 
 						<div class="form-group">
 							<label for="writer" class="col-sm-1 control-label">작성자</label>
@@ -392,11 +395,20 @@
 					</form>
 				</section>
 			</div>
+			</c:if>
+		</c:if>  
+			
+			<c:if test="${msg == 'login-error'  }">
+				
+ 
 
+			</c:if>
+			
+			
 
 		</section>
 
-		<hr />
+
 
 	</div>  
 		<footer>

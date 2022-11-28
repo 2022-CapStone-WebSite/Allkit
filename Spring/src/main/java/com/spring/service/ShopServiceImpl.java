@@ -19,6 +19,8 @@ import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
 import com.spring.domain.SearchCriteria;
+import com.spring.domain.SelectVO;
+import com.spring.domain.UpdateReplyVO;
 import com.spring.persistence.MemberDAO;
 import com.spring.persistence.ShopDAO;
 
@@ -56,18 +58,20 @@ public class ShopServiceImpl implements ShopService {
 //		}
 //	}
 	
-	   
-	 
+
 	//상품조회
 	@Override
 	public GoodsViewVO goodsView(int gdsNum) throws Exception{
+	
 		return dao.goodsView(gdsNum);  
 	}
  
 	//상품 댓글 작성
 	@Override
-	public void registReply(ReplyVO reply) throws Exception{
+	public void registReply(ReplyVO reply) throws Exception{	
 		dao.registReply(reply);  
+		setRating(reply.getGdsNum());	
+		System.out.println("test add :::" + reply.getGdsNum());
 	}
 	
 	//상품 댓글 목록
@@ -78,8 +82,10 @@ public class ShopServiceImpl implements ShopService {
 	
 	//상품 댓글 삭제
 	@Override
-	public void deleteReply(ReplyVO reply) throws Exception{
-		dao.deleteReply(reply);
+	public void deleteReply(ReplyVO reply) throws Exception{	
+		dao.deleteReply(reply);  
+		setRating(reply.getGdsNum());
+		System.out.println("test delete :::" + reply.getGdsNum());
 	}
 	
 	//아이디 체크
@@ -90,8 +96,10 @@ public class ShopServiceImpl implements ShopService {
 	
 	//상품 댓글 수정
 	@Override
-	public void modifyReply(ReplyVO reply) throws Exception{
+	public void modifyReply(ReplyVO reply) throws Exception{		
 		dao.modifyReply(reply);
+		setRating(reply.getGdsNum());
+		System.out.println("test modify");
 	}
 	  
 	//카트 담기
@@ -137,6 +145,19 @@ public class ShopServiceImpl implements ShopService {
 		return dao.orderList(order);
 	}
 	
+	//주문목록페이징
+	@Override
+	public List<OrderVO> listPageOrder(Criteria cri) throws Exception{
+		return dao.listPageOrder(cri);
+	}
+	
+	//주문목록갯수
+	@Override
+	public int listCountOrder() throws Exception{
+		return dao.listCountOrder();
+	}
+	
+ 
 	//특정 주문 목록
 	@Override
 	public List<OrderListVO> orderView(OrderVO order) throws Exception{
@@ -150,12 +171,6 @@ public class ShopServiceImpl implements ShopService {
 	 * throws Exception { return dao.listPage(displayPost, postNum); }
 	 */
 
-	
-	
-	
-	
-	
-	    
 	@Override
 	public int listcount() throws Exception{   
 		return dao.listcount();   
@@ -171,6 +186,63 @@ public class ShopServiceImpl implements ShopService {
 	  public int countSearch(SearchCriteria scri) throws Exception{
 		return dao.countSearch(scri);
 	}   
-  
-    	
+
+	/* 평점 평균 구하기 */
+	public Double getRatingAverage(int gdsNum) {
+		return dao.getRatingAverage(gdsNum);
+		
+	}
+	
+	/* 평점 평균 반영하기 */
+	public int updateRating(UpdateReplyVO vo) {
+		return dao.updateRating(vo); 
+		
+	}  
+	
+
+	/* 상품별 점수 평균계산 */
+	public void setRating(int gdsNum) {
+		Double ratingAvge = dao.getRatingAverage(gdsNum);
+	  
+		if(ratingAvge == null) {
+			ratingAvge = 0.0;
+		}
+		else {
+			ratingAvge = (double) (Math.round(ratingAvge*10));
+			ratingAvge = ratingAvge / 10; 
+			
+			UpdateReplyVO urd = new UpdateReplyVO();
+			urd.setGdsNum(gdsNum);
+			urd.setRatingAvge(ratingAvge);
+			 
+			dao.updateRating(urd); 
+			System.out.println(ratingAvge);		
+		}
+		
+
+	} 
+	 
+	
+	//평점순 상품 정보    
+	@Override
+	 public List<SelectVO> likeSelect(){   
+		 List<SelectVO> best = dao.likeSelect();
+		 return best;
+	}    
+	
+	//낮은가격순 상품 정보     
+	@Override
+	 public List<SelectVO> lowPrice(){   
+		 List<SelectVO> low = dao.lowPrice();
+		 return low; 
+	} 
+	
+	//높은가격순 상품 정보     
+	@Override
+	 public List<SelectVO> highPrice(){   
+		 List<SelectVO> high = dao.highPrice();
+		 return high;   
+	} 
+	  
+   
 }

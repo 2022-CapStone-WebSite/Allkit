@@ -2,7 +2,7 @@ package com.spring.domain;
 
 import java.util.Date;
 
-//OrderVO, OrderDetailsVO 테이블 모든 값 +  GoodsVO 테이브르이 Num,ThumbImg,Price포함
+//OrderVO, OrderDetailsVO 테이블 모든 값 +  GoodsVO 테이블 gdsNum,ThumbImg,Price포함
 public class OrderListVO {
 	
 	private String orderId;

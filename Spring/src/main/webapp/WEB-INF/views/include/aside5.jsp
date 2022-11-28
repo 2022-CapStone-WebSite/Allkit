@@ -6,7 +6,7 @@
 	
 		<li>  
 <!-- <span class="glyphicon glyphicon-phone-alt"></span> -->
-		 	<a href="">고객센터</a>   
+		 	<a href="/shop/serviceCenter">고객센터</a>   
 		</li>
 		   
 	

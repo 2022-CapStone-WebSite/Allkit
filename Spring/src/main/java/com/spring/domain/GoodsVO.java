@@ -27,7 +27,6 @@ public class GoodsVO {
 		this.gdsKcal = gdsKcal;
 	}
 	
-	
 	public String getGdsThumbImg() {
 		return gdsThumbImg;
 	} 

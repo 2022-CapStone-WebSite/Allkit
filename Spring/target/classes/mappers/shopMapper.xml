@@ -117,9 +117,22 @@ parameterType="com.spring.domain.SearchCriteria">
 	
 <!-- </select> -->
 
-  
+<!-- 댓글평점평균 -->
+<select id="getRatingAverage" resultType = "double">
+	select avg(ratingAvg)
+	  		from tbl_reply
+	  		where gdsNum = #{gdsNum}
 
+</select>
    
+<!-- 댓글평점 반영 -->
+<update id="updateRating">
+	update tbl_goods
+	set ratingAvge = #{ratingAvge}
+	where gdsNum = #{gdsNum} 
+</update> 
+
+
 
 
 <!-- 상품 소감(댓글) 작성 -->
@@ -127,7 +140,54 @@ parameterType="com.spring.domain.SearchCriteria">
 	insert into tbl_reply (gdsNum, userId, repNum, repCon, ratingAvg)
 		values (#{gdsNum}, #{userId}, tbl_reply_seq.nextval, #{repCon}, #{ratingAvg})
 </insert>
+    
+      
+<!-- 평점 순 상품 정보 -->
+<select id="likeSelect" resultType="com.spring.domain.SelectVO">
+  
+		select * from
+		(select rownum as rn, gdsNum, gdsName, ratingAvge,gdsImg,gdsPrice, (select cateName from goods_category where tbl_goods.cateCode = goods_category.cateCode) as cateName
+		from tbl_goods
+		order by ratingAvge desc nulls last)
+		<![CDATA[
+		where rn < 4  
+		]]>
 
+</select>   
+  
+<!-- 낮은가격순 -->
+<select id="lowPrice" resultType="com.spring.domain.SelectVO">   
+  
+		select * from
+		(select rownum as rn, gdsNum, gdsName, ratingAvge,gdsImg,gdsPrice, (select cateName from goods_category where tbl_goods.cateCode = goods_category.cateCode) as cateName
+		from tbl_goods
+		order by gdsPrice asc nulls last)
+		<![CDATA[
+ 		where rn < 4   
+ 		]]> 
+  
+</select>  
+
+<!-- 높은가격순 -->
+<select id="highPrice" resultType="com.spring.domain.SelectVO">   
+  
+		select * from
+		(select rownum as rn, gdsNum, gdsName, ratingAvge,gdsImg,gdsPrice, (select cateName from goods_category where tbl_goods.cateCode = goods_category.cateCode) as cateName
+		from tbl_goods
+		order by gdsPrice desc nulls last)
+		<![CDATA[
+ 		where rn < 4   
+ 		]]> 
+  
+</select>
+  
+<!-- 상품 댓글 삭제 -->
+<delete id="deleteReply">
+	delete tbl_reply
+		where repNum = #{repNum}  
+			and userId = #{userId}
+				
+</delete>
 
   
 <!-- 상품 소감(댓글) 리스트 -->
@@ -140,12 +200,7 @@ parameterType="com.spring.domain.SearchCriteria">
 	    where gdsNum = #{gdsNum} 
 </select>
 
-<!-- 상품 댓글 삭제 -->
-<delete id="deleteReply">
-	delete tbl_reply
-		where repNum = #{repNum}
-			and userId = #{userId}
-</delete>
+
 
 <!-- 아이디 체크 -->
 <select id="replyUserIdCheck" resultType="String">
@@ -215,6 +270,29 @@ from tbl_cart c
  from tbl_order 
      where userId = #{userId}
 </select>
+
+<!-- 특정 유저의 주문 목록 페이징 -->
+<select id="listPageOrder" resultType="com.spring.domain.OrderVO"
+parameterType="com.spring.domain.Criteria">
+ select orderId, userId, orderRec, userAddr1,userAddr2,userAddr3,orderPhon,amount,orderDate,delivery
+    from (
+        select orderId, userId, orderRec, userAddr1,userAddr2,userAddr3,orderPhon,amount,orderDate,delivery,
+            row_number() over(order by orderId desc) as rNum
+        from tbl_order) tb
+    where rNum between #{rowStart} and #{rowEnd}
+        order by orderId desc
+
+</select>
+
+<!-- 주문목록 갯수 -->
+<select id="listCountOrder" resultType="int">
+<![CDATA[
+	select count(orderId)
+    from tbl_order
+        where 1=1
+            and to_number(replace(nvl(orderId,'0'),'_','0')) > 0
+]]>
+</select>
  
 <!-- 특정 주문 목록 -->
 <select id="orderView" resultType="com.spring.domain.OrderListVO">
@@ -234,6 +312,8 @@ from tbl_order o
 
 
 </select>
+
+
 
 
 	<!--페이징  -->

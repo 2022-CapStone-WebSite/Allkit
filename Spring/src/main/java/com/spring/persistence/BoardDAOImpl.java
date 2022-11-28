@@ -15,7 +15,7 @@ import com.spring.domain.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
-	// 마이바티스 
+	     // 마이바티스 
 		 @Inject
 		 private SqlSession sql;
 		 

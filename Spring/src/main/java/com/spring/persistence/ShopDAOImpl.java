@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.domain.CartListVO;
@@ -19,12 +20,19 @@ import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
 import com.spring.domain.ReplyVO;
 import com.spring.domain.SearchCriteria;
+import com.spring.domain.SelectVO;
+import com.spring.domain.UpdateReplyVO;
+
   
 @Repository
 public class ShopDAOImpl implements ShopDAO {
 	  
+
 	@Inject
 	private SqlSession sql; 
+	
+
+	
 	
 	//매퍼
 	private static String namespace = "com.spring.mappers.shopMapper";
@@ -93,8 +101,11 @@ public class ShopDAOImpl implements ShopDAO {
 	//상품 댓글 작성
 	@Override
 	public void registReply(ReplyVO reply) throws Exception{
+		
+	
 		sql.insert(namespace + ".registReply", reply);  
-	}
+	
+	} 
 	 
 	//상품 댓글 목록
 	@Override
@@ -106,6 +117,7 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	public void deleteReply(ReplyVO reply) throws Exception{
 		sql.delete(namespace + ".deleteReply", reply);
+	
 	}
 	
 	//아이디 체크
@@ -162,6 +174,20 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<OrderVO> orderList(OrderVO order) throws Exception{
 		return sql.selectList(namespace + ".orderList", order);
 	}
+	
+	//주문목록페이징
+	@Override
+	public List<OrderVO> listPageOrder(Criteria cri) throws Exception{
+		return sql.selectList(namespace + ".listPageOrder",cri);
+	}
+	
+	//주문목록갯수
+	@Override
+	public int listCountOrder() throws Exception{
+		return sql.selectOne(namespace + ".listCountOrder");
+	}
+		
+	
 	//특정 주문 목록
 	@Override
 	public List<OrderListVO> orderView(OrderVO order) throws Exception{
@@ -206,6 +232,48 @@ public class ShopDAOImpl implements ShopDAO {
 	  public int countSearch(SearchCriteria scri) throws Exception{
 		return sql.selectOne(namespace + ".countSearch", scri);
 	}
-    
+	
+
+	
+	/* 평점 평균 구하기 */
+	public Double getRatingAverage(int gdsNum) {
+		return sql.selectOne(namespace + ".getRatingAverage", gdsNum);
+		
+	}
+	
+	/* 평점 평균 반영하기 */
+	public int updateRating(UpdateReplyVO vo) {
+		return sql.update(namespace + ".updateRating", vo);  
+		
+	}
+	
+	
+   
+	//평점순 상품 정보
+	@Override
+	public List<SelectVO> likeSelect(){
+		return sql.selectList(namespace + ".likeSelect");     
+	}
+	
+	//낮은가격순 상품 정보
+	@Override
+	public List<SelectVO> lowPrice(){
+		return sql.selectList(namespace + ".lowPrice");     
+	}
+	
+	//높은가격순 상품 정보
+	@Override
+	public List<SelectVO> highPrice(){
+		return sql.selectList(namespace + ".highPrice");     
+	}
+	   
+	       
+	 
+
+	
+	
+	
+	
+  
 	
 }

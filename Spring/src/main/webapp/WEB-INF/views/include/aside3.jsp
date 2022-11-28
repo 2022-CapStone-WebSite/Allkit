@@ -5,14 +5,14 @@
 	<ul>  
 	
 		<li>  
-
-		 	<a href=""><span class=""></span>베스트 </a>  
-		</li>
-		   
-	
+  
+		 	<a href="/shop/best"><span class=""></span>베스트 </a>     
+		</li> 
+		    
+	</ul>   
+		    
 		
-		
-	
+	   
 		
 	
 	<!-- 	<h3>카테고리</h3>
@@ -32,6 +32,6 @@
 		<li><a href="/shop/list?c=200&l=1">건강식품</a></li>
 		<li><a href="/shop/list?c=300&l=1">수산,해산</a></li>
 		<li><a href="/shop/list?c=400&l=1">식단,패키지</a></li> -->
-	</ul>
+
 
 

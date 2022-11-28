@@ -29,10 +29,10 @@
 		a { color:#05f; text-decoration:none; }
 		a:hover { text-decoration:underline; }
 		
-		h1, h2, h3, h4, h5, h6 { margin:0; padding:0;  }
+		h1, h2, h3, h4, h5, h6 { margin:0; padding:0; text-align:center; font-weight:bold;  }
 		
 		h2.bold{font-weight:bold;}
-		span.bold{font-weight:bold; font-size:25px;}
+		span.bold{font-weight:bold; font-size:25px;}  
 		span{font-size:20px; color:black; }   
 		
 		ul, lo, li { margin:0; padding:0; list-style:none; }  
@@ -97,12 +97,7 @@
 		   
        button.b{background-color:#555555; color:white;}  
    		
-
-  
-		
-		     
-		
-		  
+		div.p{margin:20px 0;  padding:0.5rem calc((93vw - 1000px) / 2);}     
 
 </style>
 
@@ -149,10 +144,10 @@
  	 
 <div class="container">
   
-
- <section id = "container">
-
-  <h2>게시판</h2>
+  
+ <section id = "container">  
+ <h3>게시판</h3>  
+     
   
   <table class="table table-hover">
   <tread> 
@@ -229,7 +224,7 @@
 
     <!-- 페이지용 HTML 추가-->
 
-  <div class="col-md-offset-3 pm">
+  <div class="col-md-offset-3 pm p">
  <ul class="pagination">
   <c:if test="${pageMaker.prev}">
 	<li><a href="listSearch${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>

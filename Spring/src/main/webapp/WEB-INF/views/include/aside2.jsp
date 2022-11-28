@@ -6,7 +6,7 @@
 	
 		<li>  
 
-		 	<a href=""><span class=""></span>신상품 </a>  
+		 	<a href="/shop/newProduct"><span class=""></span>신상품 </a>  
 		</li>
 		   
 	

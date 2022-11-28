@@ -48,6 +48,8 @@
 		<div id="container_box">
 		
 			<section id="content">
+
+			  
 				 <ul class="orderList">
 				  <c:forEach items="${orderList}" var="orderList">
 				  <li>
@@ -61,13 +63,10 @@
 				  </li>
 				  </c:forEach>
 				 </ul>
-			</section>
-			
-			
+
+			</section>		
 		</div>
 	</section>
-
-	
 </div>
 
 	  

@@ -9,6 +9,7 @@ import com.spring.domain.GoodsViewVO;
 import com.spring.domain.OrderListVO;
 import com.spring.domain.OrderVO;
 import com.spring.domain.ReplyListVO;
+import com.spring.domain.SelectVO;
 
 public interface AdminDAO {
 	
@@ -51,8 +52,8 @@ public interface AdminDAO {
 	//소감(댓글)삭제
 	public void deleteReply(int repNum) throws Exception;
 	
-	
-	
+
+	 
 	
 	
   

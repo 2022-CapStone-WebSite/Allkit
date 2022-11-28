@@ -43,6 +43,7 @@
 	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
 	
 	
+	
 	<beans:bean id="AdminInterceptor" class="com.spring.interceptor.AdminInterceptor" />
 	<interceptors>
 	   <interceptor>

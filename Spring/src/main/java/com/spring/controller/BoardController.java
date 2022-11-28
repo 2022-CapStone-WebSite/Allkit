@@ -54,7 +54,7 @@ public class BoardController {
 
 		service.write(vo);
   
-		return "redirect:/";
+		return "redirect:/board/listSearch";
 	}
 
 	// 글 목록

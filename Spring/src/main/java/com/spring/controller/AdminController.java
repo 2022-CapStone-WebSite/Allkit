@@ -49,8 +49,8 @@ public class AdminController {
 	
 	//관리자 화면  
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public void getIndex() throws Exception{
-		logger.info("get index");
+	public void getIndex() throws Exception{  
+		logger.info("get index");  
 	}
 	
 	//상품등록

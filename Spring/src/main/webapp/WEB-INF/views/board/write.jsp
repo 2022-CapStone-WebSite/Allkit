@@ -171,6 +171,8 @@
 
 					<p>
 						<button type="submit" class = "b" id="write">작성</button>
+						
+
 					</p>
 				</form> 
 			</c:if>

@@ -148,7 +148,7 @@
 
 
 		<section> 
-				<c:if test="${msg != 'login_error'}">  
+ 
 				
 			<form role="form" method="post" autocomplete="off">
 				<div class="form-group">
@@ -178,11 +178,12 @@
 			</div>
 
 			<p> 
+		
+		<c:if test="${member != null}"> 	
 			 
 			<button type="submit" class="btn b">수정</button>
 			<button id="cancel_btn" class="btn b">취소</button>
-		
-	 	
+  
 					
 					
 			
@@ -206,8 +207,8 @@
 			</c:if>
 
 
-			<c:if test="${msg == 'login_error'}">
-				<p>로그인을 하셔야 글을 작성할 수 있습니다.</p>
+			<c:if test="${member == null}">
+				<p>로그인을 하셔야 글을 수정할 수 있습니다.</p>
 
 				<p>
 					<a href="/">홈으로</a>

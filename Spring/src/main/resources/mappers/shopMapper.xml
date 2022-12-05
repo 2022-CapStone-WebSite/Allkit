@@ -201,7 +201,7 @@ parameterType="com.spring.domain.SearchCriteria">
 </select>
 
 
-
+ 
 <!-- 아이디 체크 -->
 <select id="replyUserIdCheck" resultType="String">
 	select userId
@@ -293,6 +293,39 @@ parameterType="com.spring.domain.Criteria">
             and to_number(replace(nvl(orderId,'0'),'_','0')) > 0
 ]]>
 </select>
+
+<!-- 주문 목록 검색 -->
+<select id="listSearchOrder" resultType = "com.spring.domain.OrderVO"
+parameterType="com.spring.domain.SearchCriteria">
+select orderId,userId,orderRec,userAddr1,userAddr2,userAddr3,orderPhon,amount,orderDate,delivery
+    from(
+        select orderId,userId,orderRec,userAddr1,userAddr2,userAddr3,orderPhon,amount,orderDate,delivery,
+            row_number() over(order by orderId desc) as rNum
+        from tbl_order
+           <include refid="search"></include>
+        )tb
+        where rNum between #{rowStart} and #{rowEnd}
+            order by orderId desc
+
+</select>
+
+<sql id="search">
+	<if test="searchType != null">
+		<if test="searchType == 't'.toString()"> where orderId like '%' || #{keyword} || '%' </if>
+	</if>
+</sql>
+ 
+
+<!-- 검색물 갯수 -->    
+<select id="countSearchOrder" resultType="int" parameterType="hashMap">
+select count(orderId)    
+    from tbl_order
+	where orderId like '%' || #{keyword} || '%'
+	<![CDATA[
+	            and to_number(replace(nvl(orderId,'0'),'_','0')) > 0
+]]>
+
+</select>  
  
 <!-- 특정 주문 목록 -->
 <select id="orderView" resultType="com.spring.domain.OrderListVO">

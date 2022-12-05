@@ -7,6 +7,10 @@ import com.spring.domain.Criteria;
 import com.spring.domain.SearchCriteria;
 
 public interface BoardDAO {
+	
+		 //아이디 체크
+		 public String idCheck(int bNo) throws Exception;
+  
 	     // 작성  
 		 public void write(BoardVO vo) throws Exception;
 		 
@@ -17,7 +21,7 @@ public interface BoardDAO {
 		 public void update(BoardVO vo) throws Exception;
 		 
 		 // 삭제
-		 public void delete(int bno) throws Exception;
+		 public void delete(BoardVO vo) throws Exception;
 		 
 		 //목록
 		 public List<BoardVO> list() throws Exception;

@@ -16,8 +16,8 @@
 	<!-- 댓글 작성 -->
 	<insert id="writeReply">
 		insert into
-		myReply(bno, rno, content, writer)
-		values(#{bno}, myReply_seq.nextval, #{content}, #{writer})
+		myReply(bno, rno, content, writer,ruserId)
+		values(#{bno}, myReply_seq.nextval, #{content}, #{writer},#{ruserId})
 	</insert>
 
 	<!-- 특정 댓글 조회 -->
@@ -32,15 +32,17 @@
 	<!-- 댓글 수정 -->
 	<update id="updateReply">
 		update myReply
-		set
-		content = #{content}
-		where rno = #{rno}
+			set
+				content = #{content}
+			where rno = #{rno}
+				and ruserId = #{ruserId}
 	</update>
 
 	<!-- 댓글 삭제 -->
 	<delete id="deleteReply">
 		delete from myReply
-		where rno = #{rno}
+			where rno = #{rno}
+				and ruserId = #{ruserId}
 	</delete>
 
 </mapper>

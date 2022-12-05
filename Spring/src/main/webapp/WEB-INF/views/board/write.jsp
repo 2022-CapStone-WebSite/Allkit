@@ -144,7 +144,7 @@
  
 		<section>
 
-			<c:if test="${msg != 'login_error'}">
+			<c:if test="${member != null }">
 			 
 				<form role="form" method="post" autocomplete="off">
 
@@ -177,7 +177,7 @@
 				</form> 
 			</c:if>
 
-			<c:if test="${msg == 'login_error'}">
+			<c:if test="${member == null }">
 				<h4 class = "log">회원만 작성가능합니다.</h4> 
 				&nbsp &nbsp<a class = "log" href="/board/listSearch">뒤로가기</a> 
 

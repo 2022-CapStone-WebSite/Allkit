@@ -126,7 +126,7 @@ public class ShopController {
 	// 상품 소감(댓글) 작성
 	@ResponseBody
 	@RequestMapping(value = "/view/registReply", method = RequestMethod.POST)
-	public void registReply(ReplyVO reply,  HttpSession session,Model model) throws Exception {
+	public void registReply(ReplyVO reply,HttpSession session,Model model) throws Exception {
 	   logger.info("regist reply");
 	   
 	   MemberVO member = (MemberVO)session.getAttribute("member");
@@ -179,12 +179,10 @@ public class ShopController {
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		String userId = service.idCheck(reply.getRepNum());
 		
-		if(member.getUserId().equals(userId)){
-			
+		if(member.getUserId().equals(userId)){	
 			reply.setUserId(member.getUserId());
 			service.modifyReply(reply);
-			result = 1;
-			
+			result = 1;		
 		}
 		return result;
 	}
@@ -313,6 +311,33 @@ public class ShopController {
 		pageMaker.setTotalCount(service.listCountOrder());
 		model.addAttribute("pageMaker",pageMaker);
 	}
+	
+	
+	//주문 목록 + 페이징 + 검색
+	@RequestMapping(value = "/listSearchOrder", method = RequestMethod.GET)
+	public void listSearchOrder(@ModelAttribute("scri") SearchCriteria scri, HttpSession session,OrderVO order, Model model,
+								@RequestParam(value = "searchType", required = false, defaultValue = "t") String searchType,
+								@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword
+								) throws Exception{
+		logger.info("get listSearchOrder");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		order.setUserId(userId);
+		
+		List<OrderVO> listSearchOrder = service.listSearchOrder(scri);
+		model.addAttribute("listSearchOrder", listSearchOrder);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		scri.setSearchTypeKeyword(searchType, keyword);
+		
+		pageMaker.setCri(scri);
+     	pageMaker.setTotalCount(service.countSearchOrder(scri)); 
+		model.addAttribute("pageMaker",pageMaker);
+	}
+	
 
 	
 	//주문 상세 목록

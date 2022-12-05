@@ -5,6 +5,8 @@ import java.util.List;
 import com.spring.domain.BReplyVO;
 
 public interface BReplyService {
+	
+	
 	// 댓글조회
 	public List<BReplyVO> readReply(int bno) throws Exception;
  

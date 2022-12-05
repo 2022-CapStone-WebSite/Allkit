@@ -19,6 +19,11 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
+	//아이디 체크
+	public String idCheck(int bNo) throws Exception{
+		return dao.idCheck(bNo);
+	}    
+	
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		dao.write(vo);
@@ -39,8 +44,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	//삭제
 	@Override
-	public void delete(int bno) throws Exception {
-		dao.delete(bno);
+	public void delete(BoardVO vo) throws Exception {
+		dao.delete(vo);
 	}
 		
 	//목록

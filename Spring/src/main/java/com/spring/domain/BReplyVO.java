@@ -8,8 +8,17 @@ public class BReplyVO {
 	private String content;
 	private String writer;
 	private Date regDate;
+	private String ruserId;
+	
+	
 	
 	  
+	public String getRuserId() {
+		return ruserId;
+	}
+	public void setRuserId(String ruserId) {
+		this.ruserId = ruserId;
+	}
 	public int getBno() {
 		return bno;
 	}

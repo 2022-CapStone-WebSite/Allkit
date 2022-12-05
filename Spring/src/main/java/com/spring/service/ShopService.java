@@ -73,6 +73,12 @@ public interface ShopService {
 	//주문목록갯수
 	public int listCountOrder() throws Exception;
 	
+	//주문목록검색
+	public List<OrderVO> listSearchOrder(SearchCriteria scri) throws Exception;
+	  
+	//검색 결과 갯수
+	public int countSearchOrder(SearchCriteria scri) throws Exception;
+	
 	//특정 주문 목록
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
 

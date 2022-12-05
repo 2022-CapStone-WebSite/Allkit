@@ -86,7 +86,7 @@
 		   </li>
 		   
 		   <li>
-		   	<a href="/shop/orderList"><span class="	glyphicon glyphicon-list-alt white"></span>&nbsp주문 목록</a>
+		   	<a href="/shop/listSearchOrder"><span class="glyphicon glyphicon-list-alt white"></span>&nbsp주문 목록</a>
 		   </li>
 		   
 		   <li>

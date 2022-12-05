@@ -186,6 +186,17 @@ public class ShopDAOImpl implements ShopDAO {
 	public int listCountOrder() throws Exception{
 		return sql.selectOne(namespace + ".listCountOrder");
 	}
+	
+	//주문목록검색
+	@Override
+	public List<OrderVO> listSearchOrder(SearchCriteria scri) throws Exception{
+		return sql.selectList(namespace +".listSearchOrder", scri);
+	}
+	  
+	//검색 결과 갯수
+	public int countSearchOrder(SearchCriteria scri) throws Exception{
+		return sql.selectOne(namespace + ".countSearchOrder",scri);
+	}
 		
 	
 	//특정 주문 목록

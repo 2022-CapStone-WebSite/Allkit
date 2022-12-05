@@ -22,6 +22,13 @@ public class BoardDAOImpl implements BoardDAO {
 		 // 매퍼
 		 private static String namespace = "com.spring.mappers.testMapper";
 		  
+		  
+		 //아이디 체크
+		 public String idCheck(int bNo) throws Exception{
+			 return sql.selectOne(namespace + ".replyUserIdCheck", bNo);
+		 }
+			
+			
 		 // 작성
 		 @Override
 		 public void write(BoardVO vo) throws Exception {
@@ -29,15 +36,11 @@ public class BoardDAOImpl implements BoardDAO {
 		 }
 		 
 		 
-		 
 		 @Override 
 		 public void boardHit (int bno) throws Exception{
 			 sql.update(namespace + ".boardHit",bno);  
 		 }
-		 
-		 
-		 
-		 
+		 	 
 		 // 조회
 		 @Override
 		 public BoardVO read(int bno) throws Exception {
@@ -52,8 +55,8 @@ public class BoardDAOImpl implements BoardDAO {
 
 		 // 삭제
 		 @Override
-		 public void delete(int bno) throws Exception {
-		  sql.delete(namespace + ".delete", bno);
+		 public void delete(BoardVO vo) throws Exception {
+		  sql.delete(namespace + ".delete", vo);
 		 }
 		  
 		  //목록

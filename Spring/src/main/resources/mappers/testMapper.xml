@@ -4,10 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mappers.testMapper">
 
+<!-- 아이디 체크 -->
+<select id="replyUserIdCheck" resultType="String">
+	select userId
+		from myBoard
+			where bNo = #{bNo}
+</select>
+
+
  <!-- 작성 -->
  <insert id="write">
-  insert into myBoard(bno, title, content, writer)
-      values (myBoard_seq.nextval, #{title}, #{content}, #{writer})
+  insert into myBoard(bno, title, content, writer,userId)
+      values (myBoard_seq.nextval, #{title}, #{content}, #{writer},#{userId})
  </insert>
  
  <!-- 조회 -->
@@ -23,7 +31,8 @@
    set 
     title = #{title},
     content = #{content}
-   where bno = #{bno}  
+   where bno = #{bno}
+   	and userId = #{userId}  
  </update>
  
   <!-- 게시판 조회수 --> 
@@ -38,9 +47,9 @@
  
  <!-- 삭제 -->
  <delete id="delete">
-  delete from
-   myBoard
-  where bno = #{bno}
+  delete myBoard
+  	where bno = #{bno}
+  		and userId = #{userId}
  </delete>
  
   <!-- 목록 -->
@@ -99,7 +108,10 @@ select bno, title, content, writer, regDate, viewCnt
 <select id="countSearch" resultType="int">
  select count(bno)
   from myBoard
-   <include refid="search"></include>
+   where title like '%' || #{keyword} || '%'
+   and content like '%' || #{keyword} || '%'
+   and writer like '%' || #{keyword} || '%'
+   and (title like '%' || #{keyword} || '%') or (content like '%' || #{keyword} || '%')
 <![CDATA[
    and bno > 0
 ]]>

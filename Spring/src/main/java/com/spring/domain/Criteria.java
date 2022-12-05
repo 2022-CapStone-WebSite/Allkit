@@ -2,7 +2,7 @@ package com.spring.domain;
 
 public class Criteria
 {
-	private int page;
+	 private int page;
 	 private int perPageNum;
 	 private int rowStart;
 	 private int rowEnd;

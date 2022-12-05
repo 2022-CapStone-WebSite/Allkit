@@ -9,8 +9,14 @@ public class BoardVO {
 	 private String writer;
 	 private Date regDate;
 	 private int viewCnt;
-	  
-	 
+	 private String userId;
+
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public int getBno() {
 		return bno;
 	}

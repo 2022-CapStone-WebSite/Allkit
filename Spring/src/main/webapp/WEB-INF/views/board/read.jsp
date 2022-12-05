@@ -121,8 +121,7 @@
 		<!--  <section id="container">-->
 		<section>   
 
-		<c:if test="${member != null }">
-				<c:if test="${member.verify == 9}">
+
 			<form role="form" method="post" autocomplete="off">
 				<input type="hidden"  id="page" name="page" value="${scri.page }" 
 					readonly="readonly " /> <input type="hidden" id="perPageNum"
@@ -165,87 +164,23 @@
 					value="${read.writer}" readonly="readonly" />
 			</div>
 
-
-
-		  
-			<p>
-				 
-
-				
-						
+			<p>						
   				<button type="button" id="list_btn" class="btn btn-black b">목록</button>
-				<button type="button" id="modity_btn" class="btn b">수정</button>
-				<button type="button" id="delete_btn" class="btn b">삭제</button>
-					
-					
-		
-				  
+  				    
+  			<c:if test="${member != null && member.userName == read.writer}">
 	  
+					<button type="button" id="modity_btn" class="btn b">수정</button>
+					<button type="button" id="delete_btn" class="btn b">삭제</button>
+
+			</c:if>
+	
 			
 				<hr/>   
 				
- 
+   
 			</form>
-			</c:if>
-		</c:if>
-		
-		
-				<c:if test="${member == null }">
-			<form role="form" method="post" autocomplete="off">
-				<input type="hidden" id="page" name="page" value="${scri.page }"
-					readonly="readonly " /> <input type="hidden" id="perPageNum"
-					name="perPageNum" value="${scri.perPageNum }" readonly="readonly " />
-
-				<input type="hidden" id="searchType" name="searchType"
-					value="${scri.searchType }" readonly="readonly " /> <input
-					type="hidden" id="keyword" name="keyword" value="${scri.keyword }"
-					readonly="readonly " />
-
-				<div class="form-group">
-					<label for="bno" class="col-sm-2 control-label">글 번호 :
-						${read.bno}</label><br />
-				</div>
-			
-			<div class="form-group"><hr>
-				&nbsp&nbsp&nbsp<label class="control-label">작성 날짜</label> <span><fmt:formatDate
-						value="${read.regDate}" pattern="yyyy-MM-dd" /></span>
-			</div>
-			
-
-			<div class="form-group">
-				<label for="title" class="col-sm-2 control-label">글 제목</label> <input
-					type="text" id="title" name="title" class="form-control"
-					value="${read.title}" readonly="readonly" />
-			</div>
-
-			<div class="form-group">
-				<label for="content" class="col-sm-2 control-label">글 내용</label>
-				<textarea id="content" name="content" class="form-control"
-					style="resize: none; overflow: scroll; height: 200px"
-					readonly="readonly">${read.content}</textarea>
-			</div>
-
-			<div class="form-group">
-				<label for="writer" class="control-label">작성자</label> <input
-					type="text" id="writer" name="writer" class="form-control"
-					value="${read.writer}" readonly="readonly" />
-			</div>
- 
-					
-  				<button type="button" id="list_btn" class="btn btn-black b">목록</button>
-		
-				<hr/>   
-			
- 
-			</form>
-			</c:if>
 
 		
-		
-		    
-
-		
-			
 			
 				<script>
 					// 폼을 변수에 저장
@@ -301,15 +236,12 @@
 	
 			<c:if test="${member != null}">
 			
-				<c:if test="${member.verify == 9}">
-					
 							<div class="form-group">
 								<button type="button" class="replyUpdate btn btn-warning btn-xs b"
 									data-rno="${repList.rno}">수정</button>
 								<button type="button" class="replyDelete btn btn-danger btn-xs b"
 									data-rno="${repList.rno}">삭제</button>
 				</c:if>
-			</c:if>
 
 								<script>
 									$(".replyUpdate")
@@ -359,8 +291,7 @@
 							type="hidden" id="keyword" name="keyword" value="${scri.keyword}"
 							readonly="readonly" />
 							
-									<c:if test="${member != null }">
-										<c:if test="${member.verify == 9}">
+
 
 						<div class="form-group">
 							<label for="writer" class="col-sm-1 control-label">작성자</label>
@@ -395,9 +326,7 @@
 					</form>
 				</section>
 			</div>
-			</c:if>
-		</c:if>  
-			
+
 			<c:if test="${msg == 'login-error'  }">
 				
  

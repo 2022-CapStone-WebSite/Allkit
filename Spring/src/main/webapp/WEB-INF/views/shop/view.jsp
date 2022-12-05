@@ -219,28 +219,28 @@
 
 								<!--+ 버튼을 누르면 수량이 증가하되, 상품의 전체 수량보다 커지지 않음  -->
 								<script>
-				    $(".plus").click(function(){
-				     var num = $(".numBox").val();
-				     var plusNum = Number(num) + 1;
-				              
-				     if(plusNum >= ${view.gdsStock}) {  
-				      $(".numBox").val(num);  
-				     } else {
-				      $(".numBox").val(plusNum);            
-				     }
-				    });  
-				    
-				    $(".minus").click(function(){  
-				     var num = $(".numBox").val();
-				     var minusNum = Number(num) - 1;
-				     
-				     if(minusNum <= 0) {
-				      $(".numBox").val(num);
-				     } else {  
-				      $(".numBox").val(minusNum);            
-				     }  
-				    });
-				   </script>
+								    $(".plus").click(function(){
+								     var num = $(".numBox").val();
+								     var plusNum = Number(num) + 1;
+								              
+								     if(plusNum >= ${view.gdsStock}) {  
+								      $(".numBox").val(num);  
+								     } else {
+								      $(".numBox").val(plusNum);            
+								     }
+								    });  
+								    
+								    $(".minus").click(function(){  
+								     var num = $(".numBox").val();
+								     var minusNum = Number(num) - 1;
+								     
+								     if(minusNum <= 0) {
+								      $(".numBox").val(num);
+								     } else {  
+								      $(".numBox").val(minusNum);            
+								     }  
+								    });
+							   </script>
 
 								<!-- 	</p>   -->
 
@@ -256,37 +256,37 @@
 								<p class="addToCart">
 									<button type="button" class="addCart_btn">장바구니에 담기</button>
 									<script>
-				 		$(".addCart_btn").click(function(){
-				 			var gdsNum = $("#gdsNum").val();
-				 			var cartStock = $(".numBox").val();
-				 			
-				 			var data = {
-				 					gdsNum : gdsNum,
-				 					cartStock : cartStock
-				 			};
-				 			
-				 			$.ajax({
-				 				url : "/shop/view/addCart",
-				 				type : "post",
-				 				data : data,
-				 				success : function(result){
-				 					if(result == 1)
-				 						{
-				 						alert("카트에 담았습니다.");
-					 					$(".numBox").val("1");	
-				 						}else{
-				 							alert("로그인 하세요")
-				 							$(".numBox").val("1");
-				 						}
-				 					
-				 				},
-				 				error : function(){
-				 					alert("카트 담기 실패");
-				 				}
-				 				
-				 			});
-				 		});  
-				 	</script>
+								 		$(".addCart_btn").click(function(){
+								 			var gdsNum = $("#gdsNum").val();
+								 			var cartStock = $(".numBox").val();
+								 			
+								 			var data = {
+								 					gdsNum : gdsNum,
+								 					cartStock : cartStock
+								 			};
+								 			
+								 			$.ajax({
+								 				url : "/shop/view/addCart",
+								 				type : "post",
+								 				data : data,
+								 				success : function(result){
+								 					if(result == 1)
+								 						{
+								 						alert("카트에 담았습니다.");
+									 					$(".numBox").val("1");	
+								 						}else{
+								 							alert("로그인 하세요")
+								 							$(".numBox").val("1");
+								 						}
+								 					
+								 				},
+								 				error : function(){
+								 					alert("카트 담기 실패");
+								 				}
+								 				
+								 			});
+								 		});  
+							 		</script>
 
 								</p>
 

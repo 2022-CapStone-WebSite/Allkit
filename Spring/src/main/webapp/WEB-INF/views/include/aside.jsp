@@ -21,7 +21,7 @@
 				<li><a href="/shop/list?c=200&l=1">건강식품</a></li>
 				<li><a href="/shop/list?c=300&l=1">수산,해산</a></li>
 				<li><a href="/shop/list?c=400&l=1">식단,패키지</a></li>
-			</ul>
+			</ul>  
 			
 			
 
@@ -35,7 +35,7 @@
 	
 	<!-- 	<h3>카테고리</h3>
 	
-			<li>
+			<li> 
 			<a href="/shop/list?c=100&l=1">제품</a>
 			<ul class="low">
 				<li><a href="/shop/list?c=101&l=2">닭가슴살</a></li>

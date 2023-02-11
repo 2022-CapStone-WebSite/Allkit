@@ -18,7 +18,7 @@
         <property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" name="driverClassName"/>
         <property value="jdbc:log4jdbc:oracle:thin:@localhost:1521/XE" name="url"/>
         <property value="lsh" name="username"/>
-        <property value="1234" name="password"/>
+        <property value="1234" name="password"/> 
     </bean>
    
     <!-- 마이바티스 연동 -->

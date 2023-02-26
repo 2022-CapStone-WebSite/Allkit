@@ -23,9 +23,9 @@
 				<li><a href="/shop/list?c=400&l=1">식단,패키지</a></li>
 			</ul>  
 			
-			
+			 
 
-		</li>
+		</li> 
 		   
 	
 		
